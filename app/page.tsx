@@ -102,8 +102,8 @@ export default async function HomePage() {
               </div>
               <div className="h-8 w-px bg-white/10" />
               <div className="text-center">
-                <p className="text-2xl font-semibold text-primary">ACH</p>
-                <p className="mt-0.5 text-xs text-neutral-500">+ Zelle payouts</p>
+                <p className="text-2xl font-semibold text-primary">Fast</p>
+                <p className="mt-0.5 text-xs text-neutral-500">ACH + Zelle payouts</p>
               </div>
             </div>
           </div>
