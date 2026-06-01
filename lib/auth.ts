@@ -30,8 +30,15 @@ export async function clearAdminSession() {
 export async function isAdminAuthenticated() {
   const token = (await cookies()).get(cookieName)?.value;
   if (!token) return false;
-  const [value, signature] = token.split(".");
+  const lastDot = token.lastIndexOf(".");
+  if (lastDot === -1) return false;
+  const value = token.slice(0, lastDot);
+  const signature = token.slice(lastDot + 1);
   if (!value || !signature) return false;
   const expected = signSession(value);
-  return timingSafeEqual(Buffer.from(signature), Buffer.from(expected));
+  try {
+    return timingSafeEqual(Buffer.from(signature), Buffer.from(expected));
+  } catch {
+    return false;
+  }
 }
