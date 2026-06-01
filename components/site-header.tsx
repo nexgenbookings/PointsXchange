@@ -48,8 +48,8 @@ export function SiteHeader() {
     <header
       className={`sticky top-0 z-40 border-b transition-all duration-300 ${
         scrolled
-          ? "bg-white/96 shadow-sm backdrop-blur-md"
-          : "bg-white/80 backdrop-blur-sm"
+          ? "border-white/8 bg-[#0A0A0A]/95 shadow-lg shadow-black/40 backdrop-blur-md"
+          : "border-white/5 bg-[#0A0A0A]/80 backdrop-blur-sm"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 lg:px-8 lg:py-3.5">
@@ -60,7 +60,7 @@ export function SiteHeader() {
             <Link
               key={href}
               href={href}
-              className="group relative px-3 py-2 text-sm font-medium text-neutral-600 transition-colors duration-150 hover:text-black"
+              className="group relative px-3 py-2 text-sm font-medium text-white/60 transition-colors duration-150 hover:text-white"
             >
               {label}
               <span className="absolute inset-x-3 bottom-1 h-[1.5px] origin-left scale-x-0 rounded-full bg-primary transition-transform duration-200 ease-spring group-hover:scale-x-100" />
@@ -79,7 +79,7 @@ export function SiteHeader() {
           </a>
           <button
             onClick={() => setOpen(!open)}
-            className="grid size-9 place-items-center rounded-lg text-neutral-600 transition-colors hover:bg-neutral-100 active:bg-neutral-200 lg:hidden"
+            className="grid size-9 place-items-center rounded-lg text-white/60 transition-colors hover:bg-white/8 active:bg-white/12 lg:hidden"
             aria-label="Toggle menu"
           >
             <span className="transition-transform duration-200" style={{ transform: open ? "rotate(90deg)" : "rotate(0)" }}>
@@ -90,17 +90,17 @@ export function SiteHeader() {
       </div>
 
       <div
-        className={`overflow-hidden border-t transition-all duration-300 ease-spring lg:hidden ${
+        className={`overflow-hidden border-t border-white/5 transition-all duration-300 ease-spring lg:hidden ${
           open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <nav className="bg-white px-4 pb-3 pt-1">
+        <nav className="bg-[#0A0A0A] px-4 pb-3 pt-1">
           {nav.map(([label, href]) => (
             <Link
               key={href}
               href={href}
               onClick={() => setOpen(false)}
-              className="flex items-center gap-2 border-b border-neutral-100 px-2 py-3 text-sm font-medium text-neutral-700 last:border-0 hover:text-black"
+              className="flex items-center gap-2 border-b border-white/5 px-2 py-3 text-sm font-medium text-white/60 last:border-0 hover:text-white"
             >
               {label}
             </Link>
