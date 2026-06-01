@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -20,13 +21,17 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true }
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const headersList = await headers();
+  const pathname = headersList.get("x-pathname") || "";
+  const isAdmin = pathname.startsWith("/admin");
+
   return (
     <html lang="en">
       <body className="bg-[#0A0A0A] font-sans text-white antialiased">
-        <SiteHeader />
+        {!isAdmin && <SiteHeader />}
         <main>{children}</main>
-        <SiteFooter />
+        {!isAdmin && <SiteFooter />}
       </body>
     </html>
   );
