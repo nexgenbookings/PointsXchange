@@ -27,19 +27,71 @@ export function LeadStatusForm({ id, status }: { id: string; status: string }) {
 
 export function ProgramForm({ program }: { program?: AdminProgram }) {
   return (
-    <form action={upsertProgram} className="grid gap-3 rounded-lg border bg-white p-5 md:grid-cols-2">
+    <form action={upsertProgram} className="grid gap-4 rounded-lg border bg-white p-5">
       <input type="hidden" name="id" value={program?.id || ""} />
-      <input className="rounded-md border px-3 py-2" name="name" defaultValue={program?.name} placeholder="Program name" required />
-      <select className="rounded-md border px-3 py-2" name="category" defaultValue={program?.category || "HOTEL"}>
-        <option>HOTEL</option><option>AIRLINE</option><option>CREDIT_CARD</option>
-      </select>
-      <input className="rounded-md border px-3 py-2" name="buyRate" type="number" step="0.00001" defaultValue={program?.buyRate} placeholder="Buy rate" required />
-      <input className="rounded-md border px-3 py-2" name="sellRate" type="number" step="0.00001" defaultValue={program?.sellRate} placeholder="Sell rate" required />
-      <input className="rounded-md border px-3 py-2" name="spread" type="number" step="0.00001" defaultValue={program?.spread} placeholder="Spread" required />
-      <input className="rounded-md border px-3 py-2" name="minimumPoints" type="number" defaultValue={program?.minimumPoints || 25000} placeholder="Minimum points" required />
-      <textarea className="rounded-md border px-3 py-2 md:col-span-2" name="description" defaultValue={program?.description || ""} placeholder="Description" />
-      <label className="flex items-center gap-2 text-sm"><input type="checkbox" name="active" defaultChecked={program?.active ?? true} /> Active</label>
-      <button className="rounded-md bg-primary px-4 py-2 text-sm font-semibold text-black">Save Program</button>
+
+      <div className="grid gap-4 md:grid-cols-2">
+        <label className="grid gap-1.5 text-sm font-medium">
+          Program name
+          <input className="rounded-md border px-3 py-2 text-sm" name="name" defaultValue={program?.name} placeholder="e.g. Marriott Bonvoy" required />
+        </label>
+        <label className="grid gap-1.5 text-sm font-medium">
+          Category
+          <select className="rounded-md border px-3 py-2 text-sm" name="category" defaultValue={program?.category || "HOTEL"}>
+            <option value="HOTEL">Hotel</option>
+            <option value="AIRLINE">Airline</option>
+            <option value="CREDIT_CARD">Credit Card</option>
+          </select>
+        </label>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-2">
+        <label className="grid gap-1.5 text-sm font-medium">
+          Payout rate <span className="font-normal text-neutral-500">($ per point paid to seller)</span>
+          <input
+            className="rounded-md border px-3 py-2 text-sm"
+            name="buyRate"
+            type="number"
+            step="0.00001"
+            min="0"
+            defaultValue={program?.buyRate}
+            placeholder="e.g. 0.008 = $8 per 1,000 pts"
+            required
+          />
+          <span className="text-xs text-neutral-400">Example: 0.008 pays $800 for 100,000 points</span>
+        </label>
+        <label className="grid gap-1.5 text-sm font-medium">
+          Minimum points
+          <input
+            className="rounded-md border px-3 py-2 text-sm"
+            name="minimumPoints"
+            type="number"
+            defaultValue={program?.minimumPoints || 25000}
+            placeholder="e.g. 25000"
+            required
+          />
+          <span className="text-xs text-neutral-400">Smallest balance you will buy</span>
+        </label>
+      </div>
+
+      {/* Hidden fields — computed automatically from buyRate */}
+      <input type="hidden" name="sellRate" value="0" />
+      <input type="hidden" name="spread" value="0" />
+
+      <label className="grid gap-1.5 text-sm font-medium">
+        Description <span className="font-normal text-neutral-500">(optional, shown on programs page)</span>
+        <textarea className="rounded-md border px-3 py-2 text-sm" name="description" defaultValue={program?.description || ""} placeholder="Short description of this program…" rows={2} />
+      </label>
+
+      <div className="flex items-center justify-between">
+        <label className="flex items-center gap-2 text-sm font-medium">
+          <input type="checkbox" name="active" defaultChecked={program?.active ?? true} />
+          Active (visible to customers)
+        </label>
+        <button className="rounded-md bg-primary px-5 py-2 text-sm font-semibold text-black hover:bg-accent active:scale-[0.97] transition-all">
+          Save Program
+        </button>
+      </div>
     </form>
   );
 }
