@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 import "./globals.css";
-import { SiteHeader } from "@/components/site-header";
-import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.pointsxchange.cc"),
@@ -21,17 +18,11 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true }
 };
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const headersList = await headers();
-  const pathname = headersList.get("x-pathname") || "";
-  const isAdmin = pathname.startsWith("/admin");
-
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className="bg-[#0A0A0A] font-sans text-white antialiased">
-        {!isAdmin && <SiteHeader />}
-        <main>{children}</main>
-        {!isAdmin && <SiteFooter />}
+        {children}
       </body>
     </html>
   );
