@@ -18,8 +18,8 @@ const faqs = [
     a: "We actively purchase hotel points (Marriott Bonvoy, Hilton Honors, World of Hyatt, IHG, and more), airline miles (American, Delta, United, Southwest, JetBlue, Alaska), and credit card rewards (Amex, Chase, Capital One, Citi, Bilt).",
   },
   {
-    q: "Are my accounts at risk?",
-    a: "We operate with full discretion. The transfer process follows standard loyalty program rules. We do not access your account credentials — transfers are initiated by you using standard program transfer tools.",
+    q: "Is there any risk to my loyalty account?",
+    a: "Selling or transferring loyalty points may violate the terms of service of some programs and could result in account suspension or closure. Points Xchange does not accept any liability for account closures, point forfeitures, or any action taken by a loyalty program against your account. You sell at your own risk and should review your program's terms before proceeding.",
   },
   {
     q: "What payment methods do you offer?",
