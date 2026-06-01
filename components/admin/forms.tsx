@@ -1,0 +1,81 @@
+import { deleteBlogPost, deleteProgram, updateLeadStatus, upsertBlogPost, upsertFaq, upsertProgram, upsertTestimonial } from "@/lib/actions";
+
+export function LeadStatusForm({ id, status }: { id: string; status: string }) {
+  return (
+    <form action={updateLeadStatus} className="flex gap-2">
+      <input type="hidden" name="id" value={id} />
+      <select name="status" defaultValue={status} className="h-9 rounded-md border px-2 text-sm">
+        {["NEW", "CONTACTED", "IN_NEGOTIATION", "CLOSED", "LOST"].map((s) => <option key={s}>{s}</option>)}
+      </select>
+      <button className="rounded-md bg-black px-3 text-sm font-semibold text-white">Save</button>
+    </form>
+  );
+}
+
+export function ProgramForm({ program }: { program?: any }) {
+  return (
+    <form action={upsertProgram} className="grid gap-3 rounded-lg border bg-white p-5 md:grid-cols-2">
+      <input type="hidden" name="id" value={program?.id || ""} />
+      <input className="rounded-md border px-3 py-2" name="name" defaultValue={program?.name} placeholder="Program name" required />
+      <select className="rounded-md border px-3 py-2" name="category" defaultValue={program?.category || "HOTEL"}>
+        <option>HOTEL</option><option>AIRLINE</option><option>CREDIT_CARD</option>
+      </select>
+      <input className="rounded-md border px-3 py-2" name="buyRate" type="number" step="0.00001" defaultValue={program?.buyRate} placeholder="Buy rate" required />
+      <input className="rounded-md border px-3 py-2" name="sellRate" type="number" step="0.00001" defaultValue={program?.sellRate} placeholder="Sell rate" required />
+      <input className="rounded-md border px-3 py-2" name="spread" type="number" step="0.00001" defaultValue={program?.spread} placeholder="Spread" required />
+      <input className="rounded-md border px-3 py-2" name="minimumPoints" type="number" defaultValue={program?.minimumPoints || 25000} placeholder="Minimum points" required />
+      <textarea className="rounded-md border px-3 py-2 md:col-span-2" name="description" defaultValue={program?.description || ""} placeholder="Description" />
+      <label className="flex items-center gap-2 text-sm"><input type="checkbox" name="active" defaultChecked={program?.active ?? true} /> Active</label>
+      <button className="rounded-md bg-primary px-4 py-2 text-sm font-semibold text-black">Save Program</button>
+    </form>
+  );
+}
+
+export function DeleteProgramForm({ id }: { id: string }) {
+  return <form action={deleteProgram}><input type="hidden" name="id" value={id} /><button className="text-sm font-semibold text-red-700">Delete</button></form>;
+}
+
+export function BlogPostForm({ post }: { post?: any }) {
+  return (
+    <form action={upsertBlogPost} className="grid gap-3 rounded-lg border bg-white p-5">
+      <input type="hidden" name="id" value={post?.id || ""} />
+      <input className="rounded-md border px-3 py-2" name="title" defaultValue={post?.title} placeholder="Title" required />
+      <input className="rounded-md border px-3 py-2" name="excerpt" defaultValue={post?.excerpt} placeholder="Excerpt" required />
+      <textarea className="min-h-40 rounded-md border px-3 py-2" name="content" defaultValue={post?.content} placeholder="Content" required />
+      <label className="flex items-center gap-2 text-sm"><input type="checkbox" name="published" defaultChecked={post?.published ?? true} /> Published</label>
+      <button className="rounded-md bg-primary px-4 py-2 text-sm font-semibold text-black">Save Post</button>
+    </form>
+  );
+}
+
+export function DeleteBlogPostForm({ id }: { id: string }) {
+  return <form action={deleteBlogPost}><input type="hidden" name="id" value={id} /><button className="text-sm font-semibold text-red-700">Delete</button></form>;
+}
+
+export function FAQForm({ faq }: { faq?: any }) {
+  return (
+    <form action={upsertFaq} className="grid gap-3 rounded-lg border bg-white p-5">
+      <input type="hidden" name="id" value={faq?.id || ""} />
+      <input className="rounded-md border px-3 py-2" name="question" defaultValue={faq?.question} placeholder="Question" required />
+      <textarea className="rounded-md border px-3 py-2" name="answer" defaultValue={faq?.answer} placeholder="Answer" required />
+      <input className="rounded-md border px-3 py-2" name="category" defaultValue={faq?.category || "General"} placeholder="Category" />
+      <input className="rounded-md border px-3 py-2" name="order" type="number" defaultValue={faq?.order || 0} placeholder="Order" />
+      <label className="flex items-center gap-2 text-sm"><input type="checkbox" name="active" defaultChecked={faq?.active ?? true} /> Active</label>
+      <button className="rounded-md bg-primary px-4 py-2 text-sm font-semibold text-black">Save FAQ</button>
+    </form>
+  );
+}
+
+export function TestimonialForm({ testimonial }: { testimonial?: any }) {
+  return (
+    <form action={upsertTestimonial} className="grid gap-3 rounded-lg border bg-white p-5">
+      <input type="hidden" name="id" value={testimonial?.id || ""} />
+      <input className="rounded-md border px-3 py-2" name="name" defaultValue={testimonial?.name} placeholder="Name" required />
+      <input className="rounded-md border px-3 py-2" name="role" defaultValue={testimonial?.role} placeholder="Role" />
+      <textarea className="rounded-md border px-3 py-2" name="quote" defaultValue={testimonial?.quote} placeholder="Quote" required />
+      <input className="rounded-md border px-3 py-2" name="rating" type="number" min="1" max="5" defaultValue={testimonial?.rating || 5} />
+      <label className="flex items-center gap-2 text-sm"><input type="checkbox" name="active" defaultChecked={testimonial?.active ?? true} /> Active</label>
+      <button className="rounded-md bg-primary px-4 py-2 text-sm font-semibold text-black">Save Testimonial</button>
+    </form>
+  );
+}

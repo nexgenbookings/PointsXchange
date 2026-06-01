@@ -1,0 +1,105 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Lead {
+  id             String     @id @default(cuid())
+  name           String
+  email          String
+  phone          String
+  programId      String?
+  programName    String
+  pointsAmount   Int
+  estimatedLow   Decimal?   @db.Decimal(10, 2)
+  estimatedHigh  Decimal?   @db.Decimal(10, 2)
+  status         LeadStatus @default(NEW)
+  note           String?
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+  program        Program?   @relation(fields: [programId], references: [id])
+}
+
+model Program {
+  id            String   @id @default(cuid())
+  name          String   @unique
+  slug          String   @unique
+  category      ProgramCategory
+  buyRate       Decimal  @db.Decimal(10, 5)
+  sellRate      Decimal  @db.Decimal(10, 5)
+  spread        Decimal  @db.Decimal(10, 5)
+  minimumPoints Int      @default(10000)
+  active        Boolean  @default(true)
+  description   String?
+  leads         Lead[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model BlogPost {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  excerpt     String
+  content     String
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model FAQ {
+  id        String   @id @default(cuid())
+  question  String
+  answer    String
+  category  String   @default("General")
+  active    Boolean  @default(true)
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Testimonial {
+  id        String   @id @default(cuid())
+  name      String
+  role      String?
+  quote     String
+  rating    Int      @default(5)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ContactRequest {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  message   String
+  status    LeadStatus @default(NEW)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model Setting {
+  key       String   @id
+  value     String
+  updatedAt DateTime @updatedAt
+}
+
+enum LeadStatus {
+  NEW
+  CONTACTED
+  IN_NEGOTIATION
+  CLOSED
+  LOST
+}
+
+enum ProgramCategory {
+  HOTEL
+  AIRLINE
+  CREDIT_CARD
+}
