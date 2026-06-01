@@ -301,6 +301,7 @@ export function Hero({ programs }: { programs: QuoteProgram[] }) {
                   <p className="mt-2 text-4xl font-semibold text-primary">
                     {formatCurrency(state.quote!.low)} – {formatCurrency(state.quote!.high)}
                   </p>
+                  <p className="mt-2 text-xs text-amber-400">This estimate is valid for 24 hours</p>
                 </div>
                 <a
                   href={`https://wa.me/${whatsappNumber.replace("+", "")}`}

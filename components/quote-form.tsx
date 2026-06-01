@@ -49,7 +49,7 @@ export function QuoteForm({ programs }: Props) {
     return (
       <div className="rounded-2xl border border-white/8 bg-[#111] p-6 shadow-2xl shadow-black/50 sm:p-8">
         <div className="flex items-center gap-3">
-          <span className="grid size-10 place-items-center rounded-full bg-green-100 text-green-600">
+          <span className="grid size-10 place-items-center rounded-full bg-green-500/15 text-green-400">
             <CheckCircle2 className="size-5" />
           </span>
           <div>
@@ -62,7 +62,8 @@ export function QuoteForm({ programs }: Props) {
           <p className="mt-2 text-3xl font-semibold text-primary">
             {formatCurrency(state.quote.low)} – {formatCurrency(state.quote.high)}
           </p>
-          <p className="mt-2 text-xs text-neutral-500">Exact offer sent to your email after desk review.</p>
+          <p className="mt-2 text-xs text-amber-400">This estimate is valid for 24 hours</p>
+          <p className="mt-1 text-xs text-[#A0A0A0]">A confirmation has been sent to your email.</p>
         </div>
         {state.message && (
           <p className="mt-3 text-sm font-medium text-green-400">{state.message}</p>

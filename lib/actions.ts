@@ -7,7 +7,7 @@ import { createAdminSession, clearAdminSession, isAdminAuthenticated } from "@/l
 import { contactEmail } from "@/lib/content";
 import { prisma } from "@/lib/prisma";
 import { calculateQuote } from "@/lib/quote";
-import { sendLeadEmail } from "@/lib/email";
+import { sendLeadEmail, sendCustomerConfirmationEmail } from "@/lib/email";
 import { slugify } from "@/lib/utils";
 
 const leadSchema = z.object({
@@ -50,6 +50,7 @@ export async function submitLead(_: unknown, formData: FormData) {
     `New quote lead: ${data.programName}`,
     `<h2>New Points Xchange lead</h2><p><strong>Name:</strong> ${data.name}</p><p><strong>Email:</strong> ${data.email}</p><p><strong>Phone:</strong> ${data.phone}</p><p><strong>Program:</strong> ${data.programName}</p><p><strong>Points:</strong> ${data.pointsAmount.toLocaleString()}</p><p><strong>Estimate:</strong> $${quote.low.toFixed(0)} - $${quote.high.toFixed(0)}</p><p>${quote.message}</p>`
   );
+  await sendCustomerConfirmationEmail(data.email, data.name, data.programName, data.pointsAmount, quote.low, quote.high);
 
   revalidatePath("/admin/leads");
   return { ok: true, quote, message: quote.message };
