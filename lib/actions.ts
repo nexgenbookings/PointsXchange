@@ -102,12 +102,15 @@ export async function updateLeadStatus(formData: FormData) {
   revalidatePath("/admin/leads");
 }
 
-export async function upsertProgram(formData: FormData) {
-  await requireAdmin();
+export async function upsertProgram(_: unknown, formData: FormData) {
+  if (!(await isAdminAuthenticated())) return { ok: false, message: "Not authenticated. Please log in again." };
   const id = String(formData.get("id") || "");
-  const name = String(formData.get("name") || "");
+  const name = String(formData.get("name") || "").trim();
+  if (!name) return { ok: false, message: "Program name is required." };
   const buyRate = Number(formData.get("buyRate"));
   const sellRate = Number(formData.get("sellRate"));
+  if (!buyRate || buyRate <= 0) return { ok: false, message: "Buy rate must be greater than 0." };
+  if (!sellRate || sellRate <= 0) return { ok: false, message: "Sell rate must be greater than 0." };
   const data = {
     name,
     slug: slugify(name),
@@ -115,14 +118,22 @@ export async function upsertProgram(formData: FormData) {
     buyRate,
     sellRate,
     spread: Math.max(0, sellRate - buyRate),
-    minimumPoints: Number(formData.get("minimumPoints")),
+    minimumPoints: Number(formData.get("minimumPoints")) || 25000,
     active: formData.get("active") === "on",
     description: String(formData.get("description") || "")
   };
-  if (id) await prisma.program.update({ where: { id }, data });
-  else await prisma.program.create({ data });
+  try {
+    if (id) await prisma.program.update({ where: { id }, data });
+    else await prisma.program.create({ data });
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : "Unknown error";
+    if (msg.includes("Unique constraint")) return { ok: false, message: `A program named "${name}" already exists.` };
+    return { ok: false, message: `Database error: ${msg}` };
+  }
   revalidatePath("/");
   revalidatePath("/admin/rates");
+  revalidatePath("/admin/programs");
+  return { ok: true, message: id ? "Program updated." : "Program saved." };
 }
 
 export async function deleteProgram(formData: FormData) {

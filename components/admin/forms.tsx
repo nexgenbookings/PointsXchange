@@ -1,3 +1,6 @@
+"use client";
+
+import { useActionState } from "react";
 import type { BlogPost, FAQ, Testimonial } from "@prisma/client";
 import { deleteBlogPost, deleteProgram, updateLeadStatus, upsertBlogPost, upsertFaq, upsertProgram, upsertTestimonial } from "@/lib/actions";
 
@@ -26,14 +29,22 @@ export function LeadStatusForm({ id, status }: { id: string; status: string }) {
 }
 
 export function ProgramForm({ program }: { program?: AdminProgram }) {
+  const [state, action, pending] = useActionState(upsertProgram, null);
+
   return (
-    <form action={upsertProgram} className="grid gap-4 rounded-lg border bg-white p-5">
+    <form action={action} className="grid gap-4 rounded-lg border bg-white p-5">
       <input type="hidden" name="id" value={program?.id || ""} />
 
       <div className="grid gap-4 md:grid-cols-2">
         <label className="grid gap-1.5 text-sm font-medium">
           Program name
-          <input className="rounded-md border px-3 py-2 text-sm" name="name" defaultValue={program?.name} placeholder="e.g. Marriott Bonvoy" required />
+          <input
+            className="rounded-md border px-3 py-2 text-sm"
+            name="name"
+            defaultValue={program?.name}
+            placeholder="e.g. Marriott Bonvoy"
+            required
+          />
         </label>
         <label className="grid gap-1.5 text-sm font-medium">
           Category
@@ -53,8 +64,8 @@ export function ProgramForm({ program }: { program?: AdminProgram }) {
             name="buyRate"
             type="number"
             step="0.00001"
-            min="0"
-            defaultValue={program?.buyRate}
+            min="0.00001"
+            defaultValue={program?.buyRate as number}
             placeholder="e.g. 0.008"
             required
           />
@@ -67,8 +78,8 @@ export function ProgramForm({ program }: { program?: AdminProgram }) {
             name="sellRate"
             type="number"
             step="0.00001"
-            min="0"
-            defaultValue={program?.sellRate}
+            min="0.00001"
+            defaultValue={program?.sellRate as number}
             placeholder="e.g. 0.012"
             required
           />
@@ -84,15 +95,19 @@ export function ProgramForm({ program }: { program?: AdminProgram }) {
             placeholder="e.g. 25000"
             required
           />
-          <span className="text-xs text-neutral-400">Smallest points balance you'll buy</span>
+          <span className="text-xs text-neutral-400">Smallest points balance you&apos;ll buy</span>
         </label>
       </div>
 
-      <input type="hidden" name="spread" value="0" />
-
       <label className="grid gap-1.5 text-sm font-medium">
-        Description <span className="font-normal text-neutral-500">(optional, shown on programs page)</span>
-        <textarea className="rounded-md border px-3 py-2 text-sm" name="description" defaultValue={program?.description || ""} placeholder="Short description of this program…" rows={2} />
+        Description <span className="font-normal text-neutral-500">(optional)</span>
+        <textarea
+          className="rounded-md border px-3 py-2 text-sm"
+          name="description"
+          defaultValue={program?.description || ""}
+          placeholder="Short description of this program…"
+          rows={2}
+        />
       </label>
 
       <div className="flex items-center justify-between">
@@ -100,16 +115,30 @@ export function ProgramForm({ program }: { program?: AdminProgram }) {
           <input type="checkbox" name="active" defaultChecked={program?.active ?? true} />
           Active (visible to customers)
         </label>
-        <button className="rounded-md bg-primary px-5 py-2 text-sm font-semibold text-black hover:bg-accent active:scale-[0.97] transition-all">
-          Save Program
+        <button
+          disabled={pending}
+          className="rounded-md bg-primary px-5 py-2 text-sm font-semibold text-black transition-all hover:bg-accent active:scale-[0.97] disabled:opacity-50"
+        >
+          {pending ? "Saving…" : "Save Program"}
         </button>
       </div>
+
+      {state?.message && (
+        <p className={`rounded-md px-3 py-2 text-sm font-medium ${state.ok ? "bg-green-50 text-green-700" : "bg-red-50 text-red-700"}`}>
+          {state.message}
+        </p>
+      )}
     </form>
   );
 }
 
 export function DeleteProgramForm({ id }: { id: string }) {
-  return <form action={deleteProgram}><input type="hidden" name="id" value={id} /><button className="text-sm font-semibold text-red-700">Delete</button></form>;
+  return (
+    <form action={deleteProgram}>
+      <input type="hidden" name="id" value={id} />
+      <button className="text-sm font-semibold text-red-700 hover:text-red-900">Delete</button>
+    </form>
+  );
 }
 
 export function BlogPostForm({ post }: { post?: Partial<BlogPost> }) {
@@ -126,7 +155,12 @@ export function BlogPostForm({ post }: { post?: Partial<BlogPost> }) {
 }
 
 export function DeleteBlogPostForm({ id }: { id: string }) {
-  return <form action={deleteBlogPost}><input type="hidden" name="id" value={id} /><button className="text-sm font-semibold text-red-700">Delete</button></form>;
+  return (
+    <form action={deleteBlogPost}>
+      <input type="hidden" name="id" value={id} />
+      <button className="text-sm font-semibold text-red-700">Delete</button>
+    </form>
+  );
 }
 
 export function FAQForm({ faq }: { faq?: Partial<FAQ> }) {
