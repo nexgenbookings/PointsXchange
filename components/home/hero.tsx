@@ -93,7 +93,7 @@ export function Hero({ programs }: { programs: QuoteProgram[] }) {
           </FadeUp>
 
           <div className="mt-5 space-y-1.5">
-            {["without marketplaces.", "without brokers.", "without waiting."].map((line, i) => (
+            {["without marketplaces.", "without the hassle.", "without waiting."].map((line, i) => (
               <FadeUp key={line} delay={0.2 + i * 0.08}>
                 <p className="text-2xl font-light text-white/30 sm:text-3xl">{line}</p>
               </FadeUp>
