@@ -49,7 +49,7 @@ export function MarketActivity({ programs }: { programs: QuoteProgram[] }) {
     const id = setInterval(() => {
       setDisplay(shuffle(programs).slice(0, 6));
       setCycle((c) => c + 1);
-    }, 3500);
+    }, 5000);
     return () => clearInterval(id);
   }, [programs]);
 
