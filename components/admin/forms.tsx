@@ -45,9 +45,9 @@ export function ProgramForm({ program }: { program?: AdminProgram }) {
         </label>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-4 md:grid-cols-3">
         <label className="grid gap-1.5 text-sm font-medium">
-          Payout rate <span className="font-normal text-neutral-500">($ per point paid to seller)</span>
+          Buy rate
           <input
             className="rounded-md border px-3 py-2 text-sm"
             name="buyRate"
@@ -55,13 +55,27 @@ export function ProgramForm({ program }: { program?: AdminProgram }) {
             step="0.00001"
             min="0"
             defaultValue={program?.buyRate}
-            placeholder="e.g. 0.008 = $8 per 1,000 pts"
+            placeholder="e.g. 0.008"
             required
           />
-          <span className="text-xs text-neutral-400">Example: 0.008 pays $800 for 100,000 points</span>
+          <span className="text-xs text-neutral-400">$ per point you pay the customer</span>
         </label>
         <label className="grid gap-1.5 text-sm font-medium">
-          Minimum points
+          Sell rate
+          <input
+            className="rounded-md border px-3 py-2 text-sm"
+            name="sellRate"
+            type="number"
+            step="0.00001"
+            min="0"
+            defaultValue={program?.sellRate}
+            placeholder="e.g. 0.012"
+            required
+          />
+          <span className="text-xs text-neutral-400">$ per point you sell for</span>
+        </label>
+        <label className="grid gap-1.5 text-sm font-medium">
+          Minimum buy
           <input
             className="rounded-md border px-3 py-2 text-sm"
             name="minimumPoints"
@@ -70,12 +84,10 @@ export function ProgramForm({ program }: { program?: AdminProgram }) {
             placeholder="e.g. 25000"
             required
           />
-          <span className="text-xs text-neutral-400">Smallest balance you will buy</span>
+          <span className="text-xs text-neutral-400">Smallest points balance you'll buy</span>
         </label>
       </div>
 
-      {/* Hidden fields — computed automatically from buyRate */}
-      <input type="hidden" name="sellRate" value="0" />
       <input type="hidden" name="spread" value="0" />
 
       <label className="grid gap-1.5 text-sm font-medium">

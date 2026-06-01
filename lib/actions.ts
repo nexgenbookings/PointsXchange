@@ -107,13 +107,14 @@ export async function upsertProgram(formData: FormData) {
   const id = String(formData.get("id") || "");
   const name = String(formData.get("name") || "");
   const buyRate = Number(formData.get("buyRate"));
+  const sellRate = Number(formData.get("sellRate"));
   const data = {
     name,
     slug: slugify(name),
     category: String(formData.get("category")) as never,
     buyRate,
-    sellRate: buyRate * 1.25,   // 25% internal margin
-    spread: buyRate * 0.25,
+    sellRate,
+    spread: Math.max(0, sellRate - buyRate),
     minimumPoints: Number(formData.get("minimumPoints")),
     active: formData.get("active") === "on",
     description: String(formData.get("description") || "")
