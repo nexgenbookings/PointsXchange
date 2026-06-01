@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { TrendingUp, TrendingDown, Minus } from "lucide-react";
 import type { QuoteProgram } from "@/lib/quote";
 import { formatCurrency } from "@/lib/utils";
@@ -30,8 +31,27 @@ const trendByIndex = [
   { icon: TrendingUp,   label: "+premium", color: "text-green-400" },
 ];
 
+function shuffle<T>(arr: T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 export function MarketActivity({ programs }: { programs: QuoteProgram[] }) {
-  const display = programs.slice(0, 6);
+  const [display, setDisplay] = useState(() => programs.slice(0, 6));
+  const [cycle, setCycle] = useState(0);
+
+  useEffect(() => {
+    if (programs.length <= 6) return;
+    const id = setInterval(() => {
+      setDisplay(shuffle(programs).slice(0, 6));
+      setCycle((c) => c + 1);
+    }, 3500);
+    return () => clearInterval(id);
+  }, [programs]);
 
   return (
     <section className="border-t border-white/8 bg-[#0A0A0A]">
@@ -54,66 +74,66 @@ export function MarketActivity({ programs }: { programs: QuoteProgram[] }) {
         </motion.div>
 
         <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {display.map((program, i) => {
-            const demand = demandByCategory[program.category || "HOTEL"] ?? "Active";
-            const meta = demandMeta[demand];
-            const trend = trendByIndex[i % trendByIndex.length];
-            const TrendIcon = trend.icon;
-            const buyRate = Number(program.buyRate);
-            const sellRate = Number(program.sellRate) || buyRate * 1.25;
-            const low = buyRate * 0.94;
-            const high = buyRate * 1.04;
-            const barWidth = Math.min(95, Math.max(30, (buyRate / 0.015) * 100));
+          <AnimatePresence mode="popLayout">
+            {display.map((program, i) => {
+              const demand = demandByCategory[program.category || "HOTEL"] ?? "Active";
+              const meta = demandMeta[demand];
+              const trend = trendByIndex[i % trendByIndex.length];
+              const TrendIcon = trend.icon;
+              const buyRate = Number(program.buyRate);
+              const low = buyRate * 0.94;
+              const high = buyRate * 1.04;
+              const barWidth = Math.min(95, Math.max(30, (buyRate / 0.015) * 100));
 
-            return (
-              <motion.div
-                key={program.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.07 }}
-                whileHover={{ y: -2, borderColor: "rgba(212,175,55,0.25)" }}
-                className="group rounded-2xl border border-white/8 bg-[#111] p-5 transition-colors"
-              >
-                <div className="flex items-start justify-between">
-                  <div>
-                    <p className="truncate font-semibold text-white">{program.name}</p>
-                    <p className="mt-0.5 text-xs capitalize text-[#A0A0A0]">
-                      {program.category?.replace("_", " ").toLowerCase()}
+              return (
+                <motion.div
+                  key={`${program.id}-${cycle}`}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.4, delay: i * 0.05 }}
+                  whileHover={{ y: -2, borderColor: "rgba(212,175,55,0.25)" }}
+                  className="group rounded-2xl border border-white/8 bg-[#111] p-5 transition-colors"
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate font-semibold text-white">{program.name}</p>
+                      <p className="mt-0.5 text-xs capitalize text-[#A0A0A0]">
+                        {program.category?.replace("_", " ").toLowerCase()}
+                      </p>
+                    </div>
+                    <span className={`ml-3 flex shrink-0 items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold ${meta.color} ${meta.bg}`}>
+                      <span className={`size-1.5 rounded-full ${meta.bar} animate-pulse`} />
+                      {demand}
+                    </span>
+                  </div>
+
+                  <div className="mt-4">
+                    <div className="flex items-center justify-between">
+                      <p className="text-xs text-[#A0A0A0]">Rate range</p>
+                      <div className={`flex items-center gap-1 text-xs font-medium ${trend.color}`}>
+                        <TrendIcon className="size-3" />
+                        {trend.label}
+                      </div>
+                    </div>
+                    <p className="mt-1 text-lg font-semibold tabular-nums text-white">
+                      {formatCurrency(low * 1000)} – {formatCurrency(high * 1000)}
+                      <span className="ml-1 text-xs font-normal text-[#A0A0A0]">per 1k pts</span>
                     </p>
                   </div>
-                  <span className={`flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold ${meta.color} ${meta.bg}`}>
-                    <span className={`size-1.5 rounded-full ${meta.bar} animate-pulse`} />
-                    {demand}
-                  </span>
-                </div>
 
-                <div className="mt-4">
-                  <div className="flex items-center justify-between">
-                    <p className="text-xs text-[#A0A0A0]">Rate range</p>
-                    <div className={`flex items-center gap-1 text-xs font-medium ${trend.color}`}>
-                      <TrendIcon className="size-3" />
-                      {trend.label}
-                    </div>
+                  <div className="mt-4 h-1 overflow-hidden rounded-full bg-white/5">
+                    <motion.div
+                      className={`h-full rounded-full ${meta.bar} opacity-60`}
+                      initial={{ width: 0 }}
+                      animate={{ width: `${barWidth}%` }}
+                      transition={{ duration: 0.8, delay: i * 0.05 + 0.2 }}
+                    />
                   </div>
-                  <p className="mt-1 text-lg font-semibold tabular-nums text-white">
-                    {formatCurrency(low * 1000)} – {formatCurrency(high * 1000)}
-                    <span className="ml-1 text-xs font-normal text-[#A0A0A0]">per 1k pts</span>
-                  </p>
-                </div>
-
-                <div className="mt-4 h-1 overflow-hidden rounded-full bg-white/5">
-                  <motion.div
-                    className={`h-full rounded-full ${meta.bar} opacity-60`}
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${barWidth}%` }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: i * 0.07 + 0.2 }}
-                  />
-                </div>
-              </motion.div>
-            );
-          })}
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
         </div>
       </div>
     </section>
