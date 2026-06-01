@@ -13,8 +13,8 @@ export default async function ProgramsPage() {
       <div className="mt-6"><ProgramForm /></div>
       <div className="mt-8 grid gap-3">
         {programs.map((program) => (
-          <div key={program.id} className="flex items-center justify-between rounded-lg border bg-white p-4">
-            <div><p className="font-semibold">{program.name}</p><p className="text-sm text-neutral-600">{program.category} · {program.active ? "Active" : "Inactive"}</p></div>
+          <div key={program.id} className="flex items-center justify-between rounded-2xl border border-white/8 bg-[#111] p-4">
+            <div><p className="font-semibold text-white">{program.name}</p><p className="text-sm text-[#A0A0A0]">{program.category} · {program.active ? "Active" : "Inactive"}</p></div>
             <DeleteProgramForm id={program.id} />
           </div>
         ))}

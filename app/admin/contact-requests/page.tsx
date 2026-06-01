@@ -11,10 +11,10 @@ export default async function ContactRequestsPage() {
       <h2 className="font-serif text-3xl font-semibold">Contact Requests</h2>
       <div className="mt-6 grid gap-4">
         {rows.map((row) => (
-          <div key={row.id} className="rounded-lg border bg-white p-5">
-            <p className="font-semibold">{row.name} · {row.email}</p>
-            <p className="text-sm text-neutral-600">{row.phone}</p>
-            <p className="mt-3 text-neutral-800">{row.message}</p>
+          <div key={row.id} className="rounded-2xl border border-white/8 bg-[#111] p-5">
+            <p className="font-semibold text-white">{row.name} · {row.email}</p>
+            <p className="text-sm text-[#A0A0A0]">{row.phone}</p>
+            <p className="mt-3 leading-7 text-[#A0A0A0]">{row.message}</p>
           </div>
         ))}
       </div>

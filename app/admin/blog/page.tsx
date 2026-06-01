@@ -12,7 +12,7 @@ export default async function AdminBlogPage() {
       <h2 className="font-serif text-3xl font-semibold">Blog Management</h2>
       <div className="mt-6"><BlogPostForm /></div>
       <div className="mt-8 grid gap-5">
-        {posts.map((post) => <div key={post.id} className="grid gap-3 rounded-lg border bg-white p-5"><BlogPostForm post={post} /><DeleteBlogPostForm id={post.id} /></div>)}
+        {posts.map((post) => <div key={post.id} className="grid gap-3"><BlogPostForm post={post} /><DeleteBlogPostForm id={post.id} /></div>)}
       </div>
     </AdminShell>
   );
