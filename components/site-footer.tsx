@@ -21,7 +21,7 @@ export function SiteFooter() {
   return (
     <footer className="border-t bg-[#080808] text-white">
       <div className="mx-auto max-w-7xl px-4 py-14 lg:px-8">
-        <div className="grid gap-10 md:grid-cols-[1.8fr_1fr_1fr_1.2fr]">
+        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-[1.8fr_1fr_1fr_1.2fr]">
           <div>
             <Logo />
             <p className="mt-4 max-w-xs text-sm leading-6 text-neutral-400">
@@ -86,7 +86,7 @@ export function SiteFooter() {
             </div>
             <Link
               href="/instant-quote"
-              className="mt-5 inline-flex h-9 items-center gap-2 rounded-full bg-primary px-4 text-xs font-semibold text-black transition-all hover:bg-accent active:scale-[0.97]"
+              className="mt-5 inline-flex h-10 items-center gap-2 rounded-full bg-primary px-5 text-xs font-semibold text-black transition-all hover:bg-accent active:scale-[0.97]"
             >
               Get a quote <ArrowRight className="size-3" />
             </Link>

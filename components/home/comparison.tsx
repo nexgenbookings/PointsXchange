@@ -45,48 +45,50 @@ export function Comparison() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="mt-10 overflow-hidden rounded-2xl border border-white/8"
+          className="mt-10 overflow-x-auto rounded-2xl border border-white/8"
         >
-          {/* Header */}
-          <div className="grid grid-cols-4 border-b border-white/8 bg-white/[0.02]">
-            <div className="p-4" />
-            {cols.map((col) => (
-              <div
-                key={col.key}
-                className={`p-4 text-center text-sm font-semibold ${
-                  col.highlight
-                    ? "border-x border-primary/20 bg-primary/8 text-primary"
-                    : "text-[#A0A0A0]"
-                }`}
-              >
-                {col.label}
-              </div>
-            ))}
-          </div>
-
-          {/* Rows */}
-          {rows.map((row, i) => (
-            <motion.div
-              key={row.label}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              className="grid grid-cols-4 border-b border-white/5 last:border-0 hover:bg-white/[0.02] transition-colors"
-            >
-              <div className="p-4 text-sm text-[#A0A0A0]">{row.label}</div>
+          <div className="min-w-[480px]">
+            {/* Header */}
+            <div className="grid grid-cols-4 border-b border-white/8 bg-white/[0.02]">
+              <div className="p-3 sm:p-4" />
               {cols.map((col) => (
                 <div
                   key={col.key}
-                  className={`flex items-center justify-center p-4 ${
-                    col.highlight ? "border-x border-primary/10 bg-primary/[0.03]" : ""
+                  className={`p-3 text-center text-xs font-semibold sm:p-4 sm:text-sm ${
+                    col.highlight
+                      ? "border-x border-primary/20 bg-primary/8 text-primary"
+                      : "text-[#A0A0A0]"
                   }`}
                 >
-                  <Icon val={row[col.key]} />
+                  {col.label}
                 </div>
               ))}
-            </motion.div>
-          ))}
+            </div>
+
+            {/* Rows */}
+            {rows.map((row, i) => (
+              <motion.div
+                key={row.label}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                className="grid grid-cols-4 border-b border-white/5 last:border-0 hover:bg-white/[0.02] transition-colors"
+              >
+                <div className="p-3 text-xs text-[#A0A0A0] sm:p-4 sm:text-sm">{row.label}</div>
+                {cols.map((col) => (
+                  <div
+                    key={col.key}
+                    className={`flex items-center justify-center p-3 sm:p-4 ${
+                      col.highlight ? "border-x border-primary/10 bg-primary/[0.03]" : ""
+                    }`}
+                  >
+                    <Icon val={row[col.key]} />
+                  </div>
+                ))}
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>

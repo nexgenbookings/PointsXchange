@@ -71,7 +71,7 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <a
             href={`https://wa.me/${whatsappNumber.replace("+", "")}`}
-            className="inline-flex h-9 items-center gap-2 rounded-full bg-black px-4 text-sm font-semibold text-white transition-all duration-150 hover:bg-neutral-800 hover:shadow-md active:scale-[0.97]"
+            className="inline-flex h-10 items-center gap-2 rounded-full bg-black px-4 text-sm font-semibold text-white transition-all duration-150 hover:bg-neutral-800 hover:shadow-md active:scale-[0.97]"
           >
             <MessageCircle className="size-3.5" />
             <span className="hidden sm:inline text-xs">{displayWhatsappNumber}</span>
@@ -79,7 +79,7 @@ export function SiteHeader() {
           </a>
           <button
             onClick={() => setOpen(!open)}
-            className="grid size-9 place-items-center rounded-lg text-white/60 transition-colors hover:bg-white/8 active:bg-white/12 lg:hidden"
+            className="grid size-10 place-items-center rounded-lg text-white/60 transition-colors hover:bg-white/8 active:bg-white/12 lg:hidden"
             aria-label="Toggle menu"
           >
             <span className="transition-transform duration-200" style={{ transform: open ? "rotate(90deg)" : "rotate(0)" }}>
@@ -91,7 +91,7 @@ export function SiteHeader() {
 
       <div
         className={`overflow-hidden border-t border-white/5 transition-all duration-300 ease-spring lg:hidden ${
-          open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          open ? "max-h-[32rem] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <nav className="bg-[#0A0A0A] px-4 pb-3 pt-1">

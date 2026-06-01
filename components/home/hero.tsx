@@ -70,12 +70,12 @@ export function Hero({ programs }: { programs: QuoteProgram[] }) {
     <section className="relative min-h-screen overflow-hidden bg-[#0A0A0A]">
       {/* Ambient background */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/4 top-0 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-primary/6 blur-[120px]" />
-        <div className="absolute right-0 top-1/3 h-96 w-96 rounded-full bg-primary/4 blur-[100px]" />
+        <div className="absolute left-1/4 top-0 h-[300px] w-[300px] -translate-x-1/2 rounded-full bg-primary/6 blur-[80px] sm:h-[600px] sm:w-[600px] sm:blur-[120px]" />
+        <div className="absolute right-0 top-1/3 h-48 w-48 rounded-full bg-primary/4 blur-[60px] sm:h-96 sm:w-96 sm:blur-[100px]" />
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
       </div>
 
-      <div className="relative mx-auto grid max-w-7xl gap-12 px-4 py-20 lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-8 lg:py-28">
+      <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-14 md:grid-cols-2 md:items-center md:gap-12 md:py-20 lg:gap-16 lg:px-8 lg:py-28">
 
         {/* Left — Headline */}
         <div>
@@ -87,7 +87,7 @@ export function Hero({ programs }: { programs: QuoteProgram[] }) {
           </FadeUp>
 
           <FadeUp delay={0.1}>
-            <h1 className="mt-6 font-serif text-5xl font-semibold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-[4rem]">
+            <h1 className="mt-6 font-serif text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-[4rem]">
               Turn loyalty points<br />into cash.
             </h1>
           </FadeUp>
@@ -149,7 +149,7 @@ export function Hero({ programs }: { programs: QuoteProgram[] }) {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="rounded-2xl border border-white/8 bg-[#111] p-6 shadow-2xl shadow-black/50 sm:p-8">
+          <div className="rounded-2xl border border-white/8 bg-[#111] p-4 shadow-2xl shadow-black/50 sm:p-6 md:p-8">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Quote Calculator</p>
@@ -195,19 +195,19 @@ export function Hero({ programs }: { programs: QuoteProgram[] }) {
                     </motion.span>
                   </div>
                   <PremiumSlider value={points} min={10000} max={1000000} onChange={setPoints} />
-                  <div className="flex justify-between text-[0.65rem] text-[#A0A0A0]">
+                  <div className="flex justify-between text-[0.6rem] text-[#A0A0A0] sm:text-[0.65rem]">
                     <span>10K</span><span>250K</span><span>500K</span><span>1M</span>
                   </div>
                 </div>
 
                 {/* Preset amounts */}
-                <div className="flex gap-2">
+                <div className="grid grid-cols-5 gap-1.5">
                   {presets.map((v) => (
                     <button
                       key={v}
                       type="button"
                       onClick={() => setPoints(v)}
-                      className={`flex-1 rounded-lg py-1.5 text-xs font-semibold transition-all ${
+                      className={`rounded-lg py-2 text-xs font-semibold transition-all ${
                         points === v
                           ? "bg-primary text-black"
                           : "border border-white/8 text-[#A0A0A0] hover:border-primary/30 hover:text-white"

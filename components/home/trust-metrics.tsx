@@ -50,7 +50,7 @@ export function TrustMetrics() {
           By the numbers
         </motion.p>
 
-        <div className="mt-10 grid grid-cols-2 gap-8 lg:grid-cols-4">
+        <div className="mt-10 grid grid-cols-2 gap-4 sm:gap-8 lg:grid-cols-4">
           {metrics.map((m, i) => (
             <motion.div
               key={m.label}
@@ -60,7 +60,7 @@ export function TrustMetrics() {
               transition={{ duration: 0.6, delay: i * 0.1 }}
               className="text-center"
             >
-              <p className="text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+              <p className="text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
                 <CountUp end={m.value} prefix={m.prefix} suffix={m.suffix} decimals={m.decimals} />
               </p>
               <p className="mt-2 text-sm text-[#A0A0A0]">{m.label}</p>

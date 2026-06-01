@@ -79,7 +79,7 @@ export function QuoteForm({ programs }: Props) {
           <Calculator className="size-5" />
         </span>
         <div className="min-w-0 flex-1">
-          <p className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-primary">Private Offer Desk</p>
+          <p className="text-[0.6rem] sm:text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-primary">Private Offer Desk</p>
           <h2 className="font-serif text-xl font-semibold leading-tight sm:text-2xl">Estimate your payout</h2>
           <p className="mt-0.5 text-xs text-[#A0A0A0]">Choose a program, set a balance, get a range.</p>
         </div>
@@ -139,7 +139,7 @@ export function QuoteForm({ programs }: Props) {
         </label>
 
         {/* Preset amounts */}
-        <div className="grid grid-cols-4 gap-2">
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
           {presets.map((value) => (
             <button
               key={value}
@@ -173,7 +173,7 @@ export function QuoteForm({ programs }: Props) {
             <p className="flex items-center gap-1.5 text-sm font-semibold">
               <LockKeyhole className="size-3.5 text-primary" /> Indicative range
             </p>
-            <p className="text-[0.65rem] font-medium text-[#A0A0A0]">Not a public formula</p>
+            <p className="text-[0.6rem] sm:text-[0.65rem] font-medium text-[#A0A0A0]">Not a public formula</p>
           </div>
           <p className="mt-2 text-2xl font-semibold tabular-nums sm:text-3xl">
             {preview ? `${formatCurrency(preview.low)} – ${formatCurrency(preview.high)}` : "Select a program"}

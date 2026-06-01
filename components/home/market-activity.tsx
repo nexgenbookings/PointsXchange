@@ -77,7 +77,7 @@ export function MarketActivity({ programs }: { programs: QuoteProgram[] }) {
               >
                 <div className="flex items-start justify-between">
                   <div>
-                    <p className="font-semibold text-white">{program.name}</p>
+                    <p className="truncate font-semibold text-white">{program.name}</p>
                     <p className="mt-0.5 text-xs capitalize text-[#A0A0A0]">
                       {program.category?.replace("_", " ").toLowerCase()}
                     </p>
