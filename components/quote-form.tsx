@@ -178,7 +178,7 @@ export function QuoteForm({ programs }: Props) {
           <p className="mt-2 text-2xl font-semibold tabular-nums sm:text-3xl">
             {preview ? `${formatCurrency(preview.low)} – ${formatCurrency(preview.high)}` : "Select a program"}
           </p>
-          <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-neutral-100">
+          <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-white/8">
             <div
               className="h-full rounded-full bg-gradient-to-r from-primary to-accent transition-all duration-500 ease-spring"
               style={{ width: `${progress}%` }}

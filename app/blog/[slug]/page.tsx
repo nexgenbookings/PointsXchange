@@ -19,15 +19,21 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const post = (await getBlogPosts()).find((item) => item.slug === slug);
   if (!post) notFound();
   return (
-    <>
-      <article className="mx-auto max-w-3xl px-4 py-16 lg:px-8">
-        <h1 className="font-serif text-4xl font-semibold sm:text-5xl">{post.title}</h1>
-        <p className="mt-5 text-lg leading-8 text-neutral-700">{post.excerpt}</p>
-        <div className="mt-8 space-y-6 text-lg leading-8 text-neutral-800">
+    <div className="bg-[#0A0A0A]">
+      <div className="relative overflow-hidden border-b border-white/8">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent" />
+        <div className="mx-auto max-w-3xl px-4 py-14 lg:px-8">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Blog</p>
+          <h1 className="mt-3 font-serif text-4xl font-semibold text-white sm:text-5xl">{post.title}</h1>
+          <p className="mt-5 text-lg leading-8 text-[#A0A0A0]">{post.excerpt}</p>
+        </div>
+      </div>
+      <article className="mx-auto max-w-3xl px-4 py-14 lg:px-8">
+        <div className="space-y-6 text-lg leading-8 text-[#A0A0A0]">
           {post.content.split("\n\n").map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
         </div>
       </article>
       <CTA />
-    </>
+    </div>
   );
 }
