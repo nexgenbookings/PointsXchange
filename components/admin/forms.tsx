@@ -1,4 +1,17 @@
+import type { BlogPost, FAQ, Testimonial } from "@prisma/client";
 import { deleteBlogPost, deleteProgram, updateLeadStatus, upsertBlogPost, upsertFaq, upsertProgram, upsertTestimonial } from "@/lib/actions";
+
+type AdminProgram = {
+  id?: string;
+  name?: string;
+  category?: string;
+  buyRate?: number | string;
+  sellRate?: number | string;
+  spread?: number | string;
+  minimumPoints?: number;
+  active?: boolean;
+  description?: string | null;
+};
 
 export function LeadStatusForm({ id, status }: { id: string; status: string }) {
   return (
@@ -12,7 +25,7 @@ export function LeadStatusForm({ id, status }: { id: string; status: string }) {
   );
 }
 
-export function ProgramForm({ program }: { program?: any }) {
+export function ProgramForm({ program }: { program?: AdminProgram }) {
   return (
     <form action={upsertProgram} className="grid gap-3 rounded-lg border bg-white p-5 md:grid-cols-2">
       <input type="hidden" name="id" value={program?.id || ""} />
@@ -35,7 +48,7 @@ export function DeleteProgramForm({ id }: { id: string }) {
   return <form action={deleteProgram}><input type="hidden" name="id" value={id} /><button className="text-sm font-semibold text-red-700">Delete</button></form>;
 }
 
-export function BlogPostForm({ post }: { post?: any }) {
+export function BlogPostForm({ post }: { post?: Partial<BlogPost> }) {
   return (
     <form action={upsertBlogPost} className="grid gap-3 rounded-lg border bg-white p-5">
       <input type="hidden" name="id" value={post?.id || ""} />
@@ -52,7 +65,7 @@ export function DeleteBlogPostForm({ id }: { id: string }) {
   return <form action={deleteBlogPost}><input type="hidden" name="id" value={id} /><button className="text-sm font-semibold text-red-700">Delete</button></form>;
 }
 
-export function FAQForm({ faq }: { faq?: any }) {
+export function FAQForm({ faq }: { faq?: Partial<FAQ> }) {
   return (
     <form action={upsertFaq} className="grid gap-3 rounded-lg border bg-white p-5">
       <input type="hidden" name="id" value={faq?.id || ""} />
@@ -66,12 +79,12 @@ export function FAQForm({ faq }: { faq?: any }) {
   );
 }
 
-export function TestimonialForm({ testimonial }: { testimonial?: any }) {
+export function TestimonialForm({ testimonial }: { testimonial?: Partial<Testimonial> }) {
   return (
     <form action={upsertTestimonial} className="grid gap-3 rounded-lg border bg-white p-5">
       <input type="hidden" name="id" value={testimonial?.id || ""} />
       <input className="rounded-md border px-3 py-2" name="name" defaultValue={testimonial?.name} placeholder="Name" required />
-      <input className="rounded-md border px-3 py-2" name="role" defaultValue={testimonial?.role} placeholder="Role" />
+      <input className="rounded-md border px-3 py-2" name="role" defaultValue={testimonial?.role || ""} placeholder="Role" />
       <textarea className="rounded-md border px-3 py-2" name="quote" defaultValue={testimonial?.quote} placeholder="Quote" required />
       <input className="rounded-md border px-3 py-2" name="rating" type="number" min="1" max="5" defaultValue={testimonial?.rating || 5} />
       <label className="flex items-center gap-2 text-sm"><input type="checkbox" name="active" defaultChecked={testimonial?.active ?? true} /> Active</label>

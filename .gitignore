@@ -5,3 +5,7 @@ node_modules
 dist
 coverage
 *.log
+.DS_Store
+points-xchange-site*/
+points-xchange-site.zip
+points-xchange-copilot-paste.txt

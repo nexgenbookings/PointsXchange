@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, MessageCircle } from "lucide-react";
-import { displayWhatsappNumber, whatsappNumber } from "@/lib/content";
+import { whatsappNumber } from "@/lib/content";
 
 export function CTA({ title = "Get a competitive cash offer for your points." }: { title?: string }) {
   return (

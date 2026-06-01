@@ -1,4 +1,3 @@
-import { redirect } from "next/navigation";
 import { AdminShell } from "@/components/admin/admin-shell";
 import { LoginForm } from "@/components/admin/login-form";
 import { isAdminAuthenticated } from "@/lib/auth";

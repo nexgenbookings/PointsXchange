@@ -1,7 +1,14 @@
+import type { Program } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
 import { blogPosts, faqs, starterPrograms, testimonials } from "@/lib/content";
 
-function normalizeProgram(program: any) {
+type SerializableProgram = Omit<Program, "buyRate" | "sellRate" | "spread"> & {
+  buyRate: number;
+  sellRate: number;
+  spread: number;
+};
+
+function normalizeProgram(program: Program): SerializableProgram {
   return {
     ...program,
     buyRate: Number(program.buyRate),

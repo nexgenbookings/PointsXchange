@@ -4,7 +4,7 @@ import { ArrowRight, Banknote, Clock, Headphones, MessageCircle, ShieldCheck, Tr
 import { CTA } from "@/components/cta";
 import { QuoteForm } from "@/components/quote-form";
 import { Card } from "@/components/ui/card";
-import { displayWhatsappNumber, whatsappNumber } from "@/lib/content";
+import { whatsappNumber } from "@/lib/content";
 import { getPrograms, getTestimonials } from "@/lib/data";
 
 const trust = [
