@@ -73,8 +73,15 @@ export function MarketActivity({ programs }: { programs: QuoteProgram[] }) {
           </div>
         </motion.div>
 
-        <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          <AnimatePresence mode="popLayout">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={cycle}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3"
+          >
             {display.map((program, i) => {
               const demand = demandByCategory[program.category || "HOTEL"] ?? "Active";
               const meta = demandMeta[demand];
@@ -87,11 +94,10 @@ export function MarketActivity({ programs }: { programs: QuoteProgram[] }) {
 
               return (
                 <motion.div
-                  key={`${program.id}-${cycle}`}
-                  initial={{ opacity: 0, y: 12 }}
+                  key={program.id}
+                  initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -12 }}
-                  transition={{ duration: 0.4, delay: i * 0.05 }}
+                  transition={{ duration: 0.35, delay: i * 0.05 }}
                   whileHover={{ y: -2, borderColor: "rgba(212,175,55,0.25)" }}
                   className="group rounded-2xl border border-white/8 bg-[#111] p-5 transition-colors"
                 >
@@ -133,8 +139,8 @@ export function MarketActivity({ programs }: { programs: QuoteProgram[] }) {
                 </motion.div>
               );
             })}
-          </AnimatePresence>
-        </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );
