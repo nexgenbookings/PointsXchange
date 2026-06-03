@@ -1,11 +1,10 @@
 import { redirect } from "next/navigation";
-import { Trash2, Download } from "lucide-react";
-import { LeadStatusForm } from "@/components/admin/forms";
+import { Download } from "lucide-react";
+import { LeadStatusForm, DeleteLeadForm } from "@/components/admin/forms";
 import { LeadsFilters } from "@/components/admin/leads-filters";
 import { AdminShell } from "@/components/admin/admin-shell";
 import { isAdminAuthenticated } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { deleteLead } from "@/lib/actions";
 import { Suspense } from "react";
 
 export default async function LeadsPage({
@@ -60,7 +59,7 @@ export default async function LeadsPage({
         <table className="w-full min-w-[960px] text-left text-sm">
           <thead className="bg-white/5 text-[#A0A0A0]">
             <tr>
-              {["Lead", "Program", "Points", "Estimate", "Status", "Created", ""].map((h) => (
+              {["Lead", "Program", "Points", "Estimate", "Status", "Created", "Actions"].map((h) => (
                 <th key={h} className="p-3 font-semibold">{h}</th>
               ))}
             </tr>
@@ -85,23 +84,7 @@ export default async function LeadsPage({
                   </td>
                   <td className="p-3"><LeadStatusForm id={lead.id} status={lead.status} /></td>
                   <td className="p-3 text-[#A0A0A0]">{lead.createdAt.toLocaleDateString()}</td>
-                  <td className="p-3">
-                    <form
-                      action={deleteLead}
-                      onSubmit={(e) => {
-                        if (!confirm("Delete this lead? This cannot be undone.")) e.preventDefault();
-                      }}
-                    >
-                      <input type="hidden" name="id" value={lead.id} />
-                      <button
-                        type="submit"
-                        className="grid size-8 place-items-center rounded-lg text-[#A0A0A0] transition-colors hover:bg-red-500/10 hover:text-red-400"
-                        title="Delete lead"
-                      >
-                        <Trash2 className="size-4" />
-                      </button>
-                    </form>
-                  </td>
+                  <td className="p-3"><DeleteLeadForm id={lead.id} /></td>
                 </tr>
               ))
             )}

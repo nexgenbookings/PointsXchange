@@ -1,6 +1,8 @@
 "use client";
 
 import { useActionState } from "react";
+import { Trash2 } from "lucide-react";
+import { deleteLead } from "@/lib/actions";
 import type { BlogPost, FAQ, Testimonial } from "@prisma/client";
 import { deleteBlogPost, deleteProgram, updateLeadStatus, upsertBlogPost, upsertFaq, upsertProgram, upsertTestimonial } from "@/lib/actions";
 
@@ -133,6 +135,26 @@ export function DeleteBlogPostForm({ id }: { id: string }) {
     <form action={deleteBlogPost}>
       <input type="hidden" name="id" value={id} />
       <button className="text-sm font-semibold text-red-400 hover:text-red-300">Delete</button>
+    </form>
+  );
+}
+
+export function DeleteLeadForm({ id }: { id: string }) {
+  return (
+    <form
+      action={deleteLead}
+      onSubmit={(e) => {
+        if (!confirm("Delete this lead? This cannot be undone.")) e.preventDefault();
+      }}
+    >
+      <input type="hidden" name="id" value={id} />
+      <button
+        type="submit"
+        className="grid size-8 place-items-center rounded-lg text-[#A0A0A0] transition-colors hover:bg-red-500/10 hover:text-red-400"
+        title="Delete lead"
+      >
+        <Trash2 className="size-4" />
+      </button>
     </form>
   );
 }
