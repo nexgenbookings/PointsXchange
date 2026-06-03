@@ -82,7 +82,7 @@ export function Hero({ programs }: { programs: QuoteProgram[] }) {
           <FadeUp delay={0}>
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/8 px-4 py-1.5 text-xs font-semibold tracking-[0.15em] uppercase text-primary">
               <span className="size-1.5 animate-pulse rounded-full bg-primary" />
-              Private Point Brokerage
+              Private Points Brokerage
             </div>
           </FadeUp>
 
