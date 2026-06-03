@@ -7,7 +7,7 @@ export async function sendLeadEmail(subject: string, html: string) {
 
   const resend = new Resend(apiKey);
   return resend.emails.send({
-    from: "Points Xchange <leads@pointsxchange.cc>",
+    from: "Points Xchange <onboarding@resend.dev>",
     to: process.env.LEAD_TO_EMAIL || contactEmail,
     subject,
     html
@@ -27,7 +27,7 @@ export async function sendCustomerConfirmationEmail(
 
   const resend = new Resend(apiKey);
   return resend.emails.send({
-    from: "Points Xchange <leads@pointsxchange.cc>",
+    from: "Points Xchange <onboarding@resend.dev>",
     to,
     subject: "Your Points Xchange quote request — we're on it",
     html: `
