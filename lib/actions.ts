@@ -154,6 +154,12 @@ export async function deleteProgram(formData: FormData) {
   revalidatePath("/admin/programs");
 }
 
+export async function deleteLead(formData: FormData) {
+  await requireAdmin();
+  await prisma.lead.delete({ where: { id: String(formData.get("id")) } });
+  revalidatePath("/admin/leads");
+}
+
 export async function upsertBlogPost(formData: FormData) {
   await requireAdmin();
   const id = String(formData.get("id") || "");

@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { logoutAdmin } from "@/lib/actions";
 
 const items = [
@@ -14,6 +17,8 @@ const items = [
 ];
 
 export function AdminShell({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+
   return (
     <section className="mx-auto max-w-7xl px-4 py-10 lg:px-8">
       <div className="flex flex-col gap-4 border-b border-white/8 pb-6 md:flex-row md:items-center md:justify-between">
@@ -28,15 +33,22 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
         </form>
       </div>
       <nav className="mt-6 flex flex-wrap gap-2">
-        {items.map(([label, href]) => (
-          <Link
-            key={href}
-            href={href}
-            className="rounded-xl border border-white/8 bg-white/5 px-3 py-2 text-sm font-medium text-[#A0A0A0] transition-colors hover:bg-primary/10 hover:text-white"
-          >
-            {label}
-          </Link>
-        ))}
+        {items.map(([label, href]) => {
+          const active = pathname === href;
+          return (
+            <Link
+              key={href}
+              href={href}
+              className={`rounded-xl border px-3 py-2 text-sm font-medium transition-colors ${
+                active
+                  ? "border-primary/50 bg-primary/10 text-primary"
+                  : "border-white/8 bg-white/5 text-[#A0A0A0] hover:bg-primary/10 hover:text-white"
+              }`}
+            >
+              {label}
+            </Link>
+          );
+        })}
       </nav>
       <div className="mt-8">{children}</div>
     </section>
