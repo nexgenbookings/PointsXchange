@@ -4,10 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 
 const metrics = [
-  { prefix: "$", value: 2.8, suffix: "M+", label: "Balances Reviewed", decimals: 1 },
-  { prefix: "",  value: 18,  suffix: "+",  label: "Programs Purchased", decimals: 0 },
-  { prefix: "",  value: 98,  suffix: "%",  label: "Offer Acceptance Rate", decimals: 0 },
-  { prefix: "",  value: 1,   suffix: " day", label: "Average Payout Time", decimals: 0 },
+  { prefix: "",  value: 0,   suffix: "",     label: "Response Time",       decimals: 0, static: "Same day" },
+  { prefix: "",  value: 18,  suffix: "+",    label: "Programs Purchased",  decimals: 0 },
+  { prefix: "",  value: 98,  suffix: "%",    label: "Offer Acceptance Rate", decimals: 0 },
+  { prefix: "",  value: 2,   suffix: " days", label: "Avg. Turnaround",    decimals: 0 },
 ];
 
 function CountUp({ end, prefix = "", suffix = "", decimals = 0, duration = 2 }: {
@@ -61,7 +61,7 @@ export function TrustMetrics() {
               className="text-center"
             >
               <p className="text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
-                <CountUp end={m.value} prefix={m.prefix} suffix={m.suffix} decimals={m.decimals} />
+                {"static" in m && m.static ? m.static : <CountUp end={m.value} prefix={m.prefix} suffix={m.suffix} decimals={m.decimals} />}
               </p>
               <p className="mt-2 text-sm text-[#A0A0A0]">{m.label}</p>
               <div className="mx-auto mt-3 h-px w-8 bg-primary/40" />
