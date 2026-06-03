@@ -137,7 +137,7 @@ export function Hero({ programs }: { programs: QuoteProgram[] }) {
               <div className="h-6 w-px bg-white/8" />
               <div>
                 <p className="text-lg font-semibold text-white">ACH + Zelle</p>
-                <p className="text-[#A0A0A0]">Payment rails</p>
+                <p className="text-[#A0A0A0]">Payment methods</p>
               </div>
             </div>
           </FadeUp>
