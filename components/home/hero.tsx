@@ -195,8 +195,13 @@ export function Hero({ programs }: { programs: QuoteProgram[] }) {
                     </motion.span>
                   </div>
                   <PremiumSlider value={points} min={10000} max={1000000} onChange={setPoints} />
-                  <div className="flex justify-between text-[0.6rem] text-[#A0A0A0] sm:text-[0.65rem]">
-                    <span>10K</span><span>250K</span><span>500K</span><span>1M</span>
+                  <div className="relative h-3 text-[0.6rem] text-[#A0A0A0] sm:text-[0.65rem]">
+                    {/* positions: (value - 10K) / (1M - 10K) * 100 */}
+                    <span className="absolute left-0 -translate-x-0">10K</span>
+                    <span className="absolute -translate-x-1/2" style={{ left: "24.74%" }}>250K</span>
+                    <span className="absolute -translate-x-1/2" style={{ left: "49.49%" }}>500K</span>
+                    <span className="absolute -translate-x-1/2" style={{ left: "74.24%" }}>750K</span>
+                    <span className="absolute right-0 translate-x-0">1M</span>
                   </div>
                 </div>
 
