@@ -46,11 +46,22 @@ export async function submitLead(_: unknown, formData: FormData) {
     return { ok: false, message: "We could not store the quote right now. Please contact us directly on WhatsApp." };
   }
 
-  await sendLeadEmail(
-    `New quote lead: ${data.programName}`,
-    `<h2>New Points Xchange lead</h2><p><strong>Name:</strong> ${data.name}</p><p><strong>Email:</strong> ${data.email}</p><p><strong>Phone:</strong> ${data.phone}</p><p><strong>Program:</strong> ${data.programName}</p><p><strong>Points:</strong> ${data.pointsAmount.toLocaleString()}</p><p><strong>Estimate:</strong> $${quote.low.toFixed(0)} - $${quote.high.toFixed(0)}</p><p>${quote.message}</p>`
-  );
-  await sendCustomerConfirmationEmail(data.email, data.name, data.programName, data.pointsAmount, quote.low, quote.high);
+  try {
+    const adminResult = await sendLeadEmail(
+      `New quote lead: ${data.programName}`,
+      `<h2>New Points Xchange lead</h2><p><strong>Name:</strong> ${data.name}</p><p><strong>Email:</strong> ${data.email}</p><p><strong>Phone:</strong> ${data.phone}</p><p><strong>Program:</strong> ${data.programName}</p><p><strong>Points:</strong> ${data.pointsAmount.toLocaleString()}</p><p><strong>Estimate:</strong> $${quote.low.toFixed(0)} - $${quote.high.toFixed(0)}</p><p>${quote.message}</p>`
+    );
+    console.log("[email] admin notification result:", JSON.stringify(adminResult));
+  } catch (e) {
+    console.error("[email] admin notification failed:", e);
+  }
+
+  try {
+    const customerResult = await sendCustomerConfirmationEmail(data.email, data.name, data.programName, data.pointsAmount, quote.low, quote.high);
+    console.log("[email] customer confirmation result:", JSON.stringify(customerResult));
+  } catch (e) {
+    console.error("[email] customer confirmation failed:", e);
+  }
 
   revalidatePath("/admin/leads");
   return { ok: true, quote, message: quote.message };
