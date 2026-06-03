@@ -131,8 +131,8 @@ export function Hero({ programs }: { programs: QuoteProgram[] }) {
               </div>
               <div className="h-6 w-px bg-white/8" />
               <div>
-                <p className="text-lg font-semibold text-white">1 day</p>
-                <p className="text-[#A0A0A0]">Avg. payout</p>
+                <p className="text-lg font-semibold text-white">2 days</p>
+                <p className="text-[#A0A0A0]">Avg. turnaround</p>
               </div>
               <div className="h-6 w-px bg-white/8" />
               <div>
