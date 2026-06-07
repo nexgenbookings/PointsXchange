@@ -1,17 +1,30 @@
 import { Resend } from "resend";
 import { contactEmail } from "@/lib/content";
 
+// Use verified domain sender if available, fall back to Resend test sender.
+// NOTE: onboarding@resend.dev can ONLY deliver to the Resend account owner's email.
+// All real delivery requires a verified domain (leads@pointsxchange.cc).
+const FROM_ADDRESS = process.env.EMAIL_FROM || "Points Xchange <onboarding@resend.dev>";
+
 export async function sendLeadEmail(subject: string, html: string) {
   const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) return { skipped: true };
+  if (!apiKey) {
+    console.warn("[email] RESEND_API_KEY not set — skipping admin notification");
+    return { skipped: true };
+  }
 
   const resend = new Resend(apiKey);
-  return resend.emails.send({
-    from: "Points Xchange <onboarding@resend.dev>",
+  const result = await resend.emails.send({
+    from: FROM_ADDRESS,
     to: process.env.LEAD_TO_EMAIL || contactEmail,
     subject,
     html
   });
+
+  if (result.error) {
+    console.error("[email] sendLeadEmail error:", JSON.stringify(result.error));
+  }
+  return result;
 }
 
 export async function sendCustomerConfirmationEmail(
@@ -23,11 +36,14 @@ export async function sendCustomerConfirmationEmail(
   high: number
 ) {
   const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) return { skipped: true };
+  if (!apiKey) {
+    console.warn("[email] RESEND_API_KEY not set — skipping customer confirmation");
+    return { skipped: true };
+  }
 
   const resend = new Resend(apiKey);
-  return resend.emails.send({
-    from: "Points Xchange <onboarding@resend.dev>",
+  const result = await resend.emails.send({
+    from: FROM_ADDRESS,
     to,
     subject: "Your Points Xchange quote request — we're on it",
     html: `
@@ -61,4 +77,9 @@ export async function sendCustomerConfirmationEmail(
       </div>
     `
   });
+
+  if (result.error) {
+    console.error("[email] sendCustomerConfirmationEmail error:", JSON.stringify(result.error));
+  }
+  return result;
 }
