@@ -53,27 +53,107 @@ export const testimonials = [
 ];
 
 export const blogPosts = [
-  "How Much Are Marriott Points Worth?",
-  "Best Way To Sell Hotel Points",
-  "How To Sell Airline Miles For Cash",
-  "Are Hyatt Points Worth More Than Marriott?",
-  "Chase Ultimate Rewards Value Guide",
-  "American Express Membership Rewards Explained",
-  "How To Turn Travel Rewards Into Cash",
-  "Hotel Points vs Airline Miles",
-  "Common Mistakes When Selling Points",
-  "When Should You Sell Points?",
-  "How Much Are Hilton Points Worth?",
-  "Can You Sell Credit Card Points?",
-  "What Affects Airline Mile Value?",
-  "ACH vs Zelle For Rewards Payouts",
-  "How To Compare Points Buyer Offers"
-].map((title) => ({
-  title,
-  slug: title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)+/g, ""),
-  excerpt: `${title.replace("?", "")} with practical guidance for sellers who want clear offers, secure handling, and competitive cash payouts.`,
-  content: `Selling rewards is about timing, program demand, and choosing a broker that communicates clearly. ${title.replace("?", "")} depends on the program, balance size, and current buyer demand. Points Xchange reviews each quote individually, protects transaction details, and provides payout options by ACH or Zelle.\n\nBefore you sell, compare the cash value against your realistic travel plans. Points that sit unused can lose value through devaluations, expiration risk, or changing program rules. A professional quote helps you understand the current market without exposing public pricing formulas.\n\nPoints Xchange is built for customers who want a premium, financial-services style process: fast responses, secure verification, competitive offers, and dedicated support. Start with an instant quote, then contact our team for an exact offer.`
-}));
+  {
+    title: "How Much Are Hotel Points Worth? A Practical Guide for Sellers",
+    slug: "how-much-are-hotel-points-worth",
+    excerpt: "Hotel points vary widely in cash value depending on the program, your balance size, and current market demand. Here's what sellers need to know before requesting a quote.",
+    content: `Hotel loyalty points are not all created equal. A Marriott Bonvoy point, a Hilton Honors point, and a World of Hyatt point each carry a different cash value — and that value can shift depending on demand, program changes, and how much you're looking to sell.
+
+Understanding roughly what your points are worth helps you evaluate any offer you receive and decide whether selling makes sense for your situation.
+
+**Why Point Values Differ by Program**
+
+Each hotel chain sets its own reward structure. Programs with higher redemption costs for rooms (like Hyatt) tend to produce higher cash value per point, because buyers can extract more value from each unit. Programs with lower redemption rates naturally yield lower cash payouts.
+
+Marriott Bonvoy points typically trade at a lower per-point rate than Hyatt, but Marriott balances tend to be larger — so total payouts can still be significant. Hilton Honors points are abundant in the market, which affects demand.
+
+**What Factors Affect Your Payout**
+
+Beyond the program itself, several things influence what a broker will offer:
+
+Balance size matters. Larger balances are generally more attractive to buyers and may yield a better rate. Small balances — typically under 25,000 to 50,000 points depending on the program — may fall below minimum thresholds for review.
+
+Account condition matters. Points tied to accounts in good standing, without recent suspicious activity, are easier to transact and command better offers.
+
+Timing matters. Buyer demand fluctuates. A program seeing strong travel demand at a given moment may yield a stronger offer than one with soft market interest.
+
+**When Selling Makes Sense**
+
+Selling hotel points is worth considering when you have a large balance you're unlikely to use, when you need liquidity, or when the cash value exceeds what you'd realistically get from redeeming for rooms.
+
+Points can lose value over time through program devaluations — when a hotel chain quietly raises the points cost for redemptions. Selling before a devaluation locks in the current market rate.
+
+**How Points Xchange Works**
+
+Points Xchange reviews each request individually. Submit your program and balance through the instant quote tool to get an indicative range. From there, our desk provides a verified cash offer and walks you through the process. Payouts are made by ACH or Zelle after verification is complete.`,
+  },
+  {
+    title: "How To Sell Airline Miles for Cash: What You Need to Know",
+    slug: "how-to-sell-airline-miles-for-cash",
+    excerpt: "Airline miles sitting unused in your account can be converted to cash through a private broker. Here's how the process works and what to expect.",
+    content: `Most people earn airline miles without a clear plan to use them. Balances accumulate across programs — American AAdvantage, Delta SkyMiles, United MileagePlus, Southwest Rapid Rewards — and sit dormant while expiration deadlines approach or program devaluations quietly erode their value.
+
+Selling airline miles for cash is a straightforward alternative. Here's what the process actually looks like.
+
+**Is It Possible to Sell Airline Miles?**
+
+Yes. A private points broker reviews your balance, evaluates current demand for that program, and makes a cash offer. The transaction is handled discreetly, and payment is made by ACH or Zelle.
+
+Not every program or balance qualifies. Brokers typically have minimum thresholds — often 25,000 to 35,000 miles depending on the airline — and will assess your account before making a final offer.
+
+**Which Airline Programs Have the Most Demand?**
+
+Programs with broad route networks and strong partner redemption options tend to attract the most consistent buyer interest. American AAdvantage, United MileagePlus, and Alaska Mileage Plan are frequently in demand. Delta SkyMiles and Southwest Rapid Rewards also move regularly.
+
+The per-mile cash rate varies by program. Alaska miles often yield among the highest rates due to their partner redemption value. Delta miles typically yield a lower per-mile rate but are widely held and transact in volume.
+
+**What to Expect When You Sell**
+
+The process with a reputable broker follows a clear sequence. You submit your program and balance, receive an indicative range, and then — after a brief verification process — receive a confirmed offer. If you accept, you follow simple transfer instructions at your own pace. Payment follows after verification is complete.
+
+Reputable brokers will never ask you to share account passwords. The transfer process uses standard airline program mechanics and does not require handing over login credentials.
+
+**Timing Your Sale**
+
+Airline miles, like hotel points, are subject to devaluation. When a program changes its award chart or moves to dynamic pricing, the redemption value of miles can drop significantly overnight. Selling into a strong market — before such changes — preserves the value you've already earned.
+
+If your balance is large, has been sitting unused for more than a year, or you simply have no travel plans that would justify the redemption, a cash sale is worth evaluating. Points Xchange provides a no-obligation instant quote so you can see where the market is before making a decision.`,
+  },
+  {
+    title: "Selling Credit Card Points: Amex, Chase, Capital One, and More",
+    slug: "selling-credit-card-points",
+    excerpt: "Transferable credit card rewards from Amex, Chase, Capital One, Citi, and Bilt can be sold for cash. Here's how the market works and what your points may be worth.",
+    content: `Transferable credit card rewards — American Express Membership Rewards, Chase Ultimate Rewards, Capital One Miles, Citi ThankYou Points, and Bilt Rewards — are among the most flexible currencies in the points market. They can be transferred to dozens of airline and hotel partners, which gives them strong underlying demand and makes them attractive to buyers.
+
+If you're sitting on a large balance with no clear redemption plan, selling is a legitimate option worth understanding.
+
+**Why Transferable Points Have Strong Cash Value**
+
+Unlike co-branded airline or hotel cards, transferable rewards programs let buyers move points into whichever partner program has the most value at a given time. That flexibility supports stronger demand and, typically, better per-point cash rates compared to single-program currencies.
+
+Chase Ultimate Rewards and American Express Membership Rewards consistently rank among the highest-value transferable currencies. Capital One Miles and Citi ThankYou Points follow closely. Bilt Rewards, while newer, commands strong interest due to its premium transfer partner list.
+
+**How the Sale Process Works**
+
+A private broker evaluates your program, balance size, and account condition before making an offer. Submit your details through an instant quote tool to receive an indicative cash range. After review, the broker issues a confirmed offer. If you proceed, the transfer is handled using standard program mechanics — no password sharing required.
+
+Payment is made by ACH or Zelle after the transfer is verified. The timeline from quote request to payout is typically within a few business days.
+
+**What Affects Your Offer**
+
+Balance size is the primary factor. Minimum thresholds vary by program — most brokers start at 25,000 points, with some programs requiring 30,000 or more. Larger balances tend to yield better per-point rates.
+
+Account condition matters as well. Accounts in good standing with no recent flags receive offers more readily. Unusual activity or recently opened accounts may be reviewed more carefully.
+
+Market timing also plays a role. Demand for specific programs shifts based on what buyers can do with the points at a given moment.
+
+**When Selling Is the Right Move**
+
+If your credit card points are earning at a slower rate than you're spending, or you simply have no near-term travel plans, converting to cash now avoids the risk of future devaluations. All major transferable programs have reduced point values at various points — and those changes typically happen without advance notice.
+
+Points Xchange reviews each request individually and provides a verified cash offer after a brief evaluation. Use the instant quote tool to get an indicative range for your balance, then reach out to our desk for a confirmed offer.`,
+  },
+];
 
 export const seoPages = [
   { slug: "sell-marriott-points", title: "Sell Marriott Points", program: "Marriott Bonvoy", intro: "Turn Marriott Bonvoy points into cash with a discreet, professional brokerage process." },
