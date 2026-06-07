@@ -52,7 +52,6 @@ function PremiumSlider({ value, min, max, onChange }: { value: number; min: numb
 export function Hero({ programs }: { programs: QuoteProgram[] }) {
   const [programId, setProgramId] = useState(programs[0]?.id || "");
   const [points, setPoints] = useState(100000);
-  const [showForm, setShowForm] = useState(false);
   const [state, action, pending] = useActionState(submitLead, null);
 
   const selected = useMemo(
