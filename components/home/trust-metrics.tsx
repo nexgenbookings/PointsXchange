@@ -5,7 +5,7 @@ import { motion, useInView } from "framer-motion";
 
 const metrics = [
   { prefix: "",  value: 0,   suffix: "",     label: "Response Time",       decimals: 0, static: "Same day" },
-  { prefix: "",  value: 18,  suffix: "+",    label: "Programs Purchased",  decimals: 0 },
+  { prefix: "",  value: 18,  suffix: "+",    label: "Programs Supported",  decimals: 0 },
   { prefix: "",  value: 98,  suffix: "%",    label: "Offer Acceptance Rate", decimals: 0 },
   { prefix: "",  value: 2,   suffix: " days", label: "Avg. Turnaround",    decimals: 0 },
 ];
