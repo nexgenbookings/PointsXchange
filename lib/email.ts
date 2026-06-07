@@ -4,7 +4,7 @@ import { contactEmail } from "@/lib/content";
 // Use verified domain sender if available, fall back to Resend test sender.
 // NOTE: onboarding@resend.dev can ONLY deliver to the Resend account owner's email.
 // All real delivery requires a verified domain (leads@pointsxchange.cc).
-const FROM_ADDRESS = process.env.EMAIL_FROM || "Points Xchange <leads@pointsxchange.cc>";
+const FROM_ADDRESS = process.env.EMAIL_FROM || "Points Xchange <leads@leads.pointsxchange.cc>";
 
 export async function sendLeadEmail(subject: string, html: string) {
   const apiKey = process.env.RESEND_API_KEY;
