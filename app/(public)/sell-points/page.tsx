@@ -35,7 +35,7 @@ export default function SellPointsPage() {
           <h1 className="mt-3 font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
             A private desk for rewards sellers.
           </h1>
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-[#A0A0A0]">
+          <p className="mt-5 max-w-2xl text-lg leading-8 text-white/60">
             Convert unused loyalty balances into cash through competitive offers, discreet verification, and fast ACH or Zelle payouts.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
@@ -55,12 +55,12 @@ export default function SellPointsPage() {
         <h2 className="mt-2 font-serif text-2xl font-semibold text-white sm:text-3xl">Three categories. All programs.</h2>
         <div className="mt-8 grid gap-4 md:grid-cols-3">
           {types.map(({ label, desc, icon: Icon }) => (
-            <div key={label} className="rounded-2xl border border-white/8 bg-[#111827] p-6 transition-all hover:border-primary/20">
+            <div key={label} className="rounded-2xl border border-white/8 bg-[#111827] p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5">
               <span className="grid size-10 place-items-center rounded-xl bg-primary/10">
                 <Icon className="size-5 text-primary" />
               </span>
               <p className="mt-4 font-semibold text-white">{label}</p>
-              <p className="mt-1.5 text-sm text-[#A0A0A0]">{desc}</p>
+              <p className="mt-1.5 text-sm text-white/60">{desc}</p>
             </div>
           ))}
         </div>
@@ -78,7 +78,7 @@ export default function SellPointsPage() {
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <p className="mt-4 font-semibold text-white">{title}</p>
-                <p className="mt-1.5 text-xs leading-5 text-[#A0A0A0]">{desc}</p>
+                <p className="mt-1.5 text-xs leading-5 text-white/60">{desc}</p>
               </div>
             ))}
           </div>

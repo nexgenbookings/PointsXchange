@@ -13,7 +13,8 @@ const inputs = [
 
 export function OfferExplainer() {
   return (
-    <section className="bg-[#080C18]">
+    <section className="relative bg-[#080C18]">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
       <div className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -57,7 +57,7 @@ export default async function SupportedProgramsPage() {
                 </div>
                 <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                   {items.map((program) => (
-                    <div key={program.slug} className="group rounded-2xl border border-white/8 bg-[#111827] p-5 transition-all hover:border-primary/20">
+                    <div key={program.slug} className="group rounded-2xl border border-white/8 bg-[#111827] p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5">
                       <div className="flex items-start justify-between">
                         <h3 className="font-semibold text-white">{program.name}</h3>
                         <span className="rounded-full border border-green-500/20 bg-green-500/8 px-2 py-0.5 text-[0.65rem] font-semibold text-green-400">buying</span>

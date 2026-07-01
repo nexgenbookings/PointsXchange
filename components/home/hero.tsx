@@ -3,7 +3,7 @@
 import { useState, useMemo, useActionState } from "react";
 import type React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronDown, LockKeyhole, MessageCircle, Star } from "lucide-react";
+import { ArrowRight, ChevronDown, Loader2, LockKeyhole, MessageCircle, Star } from "lucide-react";
 import Link from "next/link";
 import { submitLead } from "@/lib/actions";
 import { calculateQuote, type QuoteProgram } from "@/lib/quote";
@@ -126,7 +126,7 @@ export function Hero({ programs }: { programs: QuoteProgram[] }) {
           </div>
 
           <FadeUp delay={0.4}>
-            <p className="mt-8 max-w-md text-base leading-7 text-[#A0A0A0]">
+            <p className="mt-8 max-w-md text-base leading-7 text-white/65">
               We buy hotel points, airline miles, and credit card rewards — and we pay fast. Every offer is reviewed by a real person, not an algorithm.
             </p>
           </FadeUp>
@@ -149,15 +149,15 @@ export function Hero({ programs }: { programs: QuoteProgram[] }) {
           </FadeUp>
 
           <FadeUp delay={0.6}>
-            <div className="mt-12 grid grid-cols-3 gap-4 border-t border-white/8 pt-8">
+            <div className="mt-12 flex items-center gap-0 divide-x divide-white/10 border-t border-white/8 pt-8">
               {[
-                { value: "18+", label: "Programs supported" },
-                { value: "1–2 days", label: "Avg. turnaround" },
-                { value: "ACH + Zelle", label: "Payment methods" },
+                { value: "18+", label: "Programs" },
+                { value: "1–2 days", label: "Turnaround" },
+                { value: "ACH · Zelle", label: "Payment" },
               ].map(({ value, label }) => (
-                <div key={label} className="text-center sm:text-left">
+                <div key={label} className="flex-1 px-4 first:pl-0 last:pr-0">
                   <p className="text-base font-semibold text-white sm:text-lg">{value}</p>
-                  <p className="mt-0.5 text-xs text-[#A0A0A0]">{label}</p>
+                  <p className="mt-0.5 text-xs text-white/45">{label}</p>
                 </div>
               ))}
             </div>
@@ -287,17 +287,26 @@ export function Hero({ programs }: { programs: QuoteProgram[] }) {
                 )}
 
                 {/* Contact fields */}
-                <div className="grid gap-2.5 sm:grid-cols-3">
-                  {[["name", "Name", "text"], ["email", "Email", "email"], ["phone", "Phone", "tel"]].map(([name, placeholder, type]) => (
-                    <input
-                      key={name}
-                      name={name}
-                      type={type}
-                      placeholder={placeholder}
-                      required
-                      className="rounded-xl border border-white/8 bg-white/5 px-3 py-2.5 text-sm text-white placeholder-[#A0A0A0]/60 focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
-                    />
-                  ))}
+                <div className="rounded-xl border border-white/8 bg-white/[0.02] p-3">
+                  <p className="mb-2.5 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-white/35">Your contact details</p>
+                  <div className="grid gap-2.5 sm:grid-cols-3">
+                    {[
+                      { name: "name",  label: "Full name",    type: "text",  placeholder: "Jane Smith"         },
+                      { name: "email", label: "Email",        type: "email", placeholder: "jane@example.com"   },
+                      { name: "phone", label: "Phone",        type: "tel",   placeholder: "+1 (555) 000-0000"  },
+                    ].map(({ name, label, type, placeholder }) => (
+                      <label key={name} className="grid gap-1">
+                        <span className="text-[0.65rem] font-medium text-white/50">{label}</span>
+                        <input
+                          name={name}
+                          type={type}
+                          placeholder={placeholder}
+                          required
+                          className="h-10 w-full rounded-lg border border-white/10 bg-white/5 px-3 text-sm text-white placeholder:text-white/25 focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
+                        />
+                      </label>
+                    ))}
+                  </div>
                 </div>
 
                 <button
@@ -305,8 +314,11 @@ export function Hero({ programs }: { programs: QuoteProgram[] }) {
                   disabled={pending}
                   className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3.5 text-sm font-semibold text-black transition-all hover:bg-accent hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98] disabled:opacity-60"
                 >
-                  {pending ? "Submitting…" : "Request Verified Offer"}
-                  {!pending && <ArrowRight className="size-4" />}
+                  {pending ? (
+                    <><Loader2 className="size-4 animate-spin" /> Submitting…</>
+                  ) : (
+                    <>Request Verified Offer <ArrowRight className="size-4" /></>
+                  )}
                 </button>
 
                 {state?.message && !state.ok && (
