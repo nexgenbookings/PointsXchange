@@ -43,15 +43,17 @@ function shuffle<T>(arr: T[]): T[] {
 export function MarketActivity({ programs }: { programs: QuoteProgram[] }) {
   const [display, setDisplay] = useState(() => programs.slice(0, 6));
   const [cycle, setCycle] = useState(0);
+  const [paused, setPaused] = useState(false);
 
   useEffect(() => {
     if (programs.length <= 6) return;
+    if (paused) return;
     const id = setInterval(() => {
       setDisplay(shuffle(programs).slice(0, 6));
       setCycle((c) => c + 1);
     }, 5000);
     return () => clearInterval(id);
-  }, [programs]);
+  }, [programs, paused]);
 
   return (
     <section className="border-t border-white/8 bg-[#0A0A0A]">
@@ -81,6 +83,8 @@ export function MarketActivity({ programs }: { programs: QuoteProgram[] }) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
             className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
           >
             {display.map((program, i) => {
               const demand = demandByCategory[program.category || "HOTEL"] ?? "Active";

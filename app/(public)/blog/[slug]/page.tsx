@@ -30,7 +30,22 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       </div>
       <article className="mx-auto max-w-3xl px-4 py-14 lg:px-8">
         <div className="space-y-6 text-lg leading-8 text-[#A0A0A0]">
-          {post.content.split("\n\n").map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+          {post.content.split("\n\n").map((paragraph) => {
+            const heading = paragraph.match(/^\*\*(.+?)\*\*$/);
+            if (heading) {
+              return <h2 key={paragraph} className="font-serif text-2xl font-semibold text-white">{heading[1]}</h2>;
+            }
+            // Inline bold within a paragraph
+            const parts = paragraph.split(/(\*\*.+?\*\*)/g);
+            return (
+              <p key={paragraph}>
+                {parts.map((part, i) => {
+                  const bold = part.match(/^\*\*(.+?)\*\*$/);
+                  return bold ? <strong key={i} className="font-semibold text-white">{bold[1]}</strong> : part;
+                })}
+              </p>
+            );
+          })}
         </div>
       </article>
       <CTA />

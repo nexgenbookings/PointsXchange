@@ -47,7 +47,7 @@ export default function TermsPage() {
 
           <section>
             <h2 className="font-serif text-xl font-semibold text-white">Governing Terms</h2>
-            <p className="mt-3 leading-7">These terms constitute the entire agreement between you and Points Xchange with respect to use of our services. Production deployments should supplement these terms with counsel-approved legal language specific to your jurisdiction.</p>
+            <p className="mt-3 leading-7">These terms constitute the entire agreement between you and Points Xchange with respect to use of our services.</p>
           </section>
         </div>
       </div>
