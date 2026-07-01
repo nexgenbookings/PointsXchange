@@ -309,6 +309,10 @@ export function Hero({ programs }: { programs: QuoteProgram[] }) {
                   </div>
                 </div>
 
+                <p className="rounded-lg border border-amber-500/15 bg-amber-500/5 px-3 py-2 text-xs leading-5 text-amber-400/70">
+                  Note: Selling points may violate your loyalty program&apos;s terms of service.
+                </p>
+
                 <button
                   type="submit"
                   disabled={pending}

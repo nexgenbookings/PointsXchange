@@ -13,7 +13,14 @@ export const metadata: Metadata = {
     description: "Turn your points into cash with fast service, secure transactions, and competitive rates.",
     url: "/",
     siteName: "Points Xchange",
-    type: "website"
+    type: "website",
+    images: [{ url: "/og", width: 1200, height: 630, alt: "Points Xchange — Turn loyalty points into cash" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Points Xchange | Sell Points for Cash",
+    description: "Turn your points into cash with fast service, secure transactions, and competitive rates.",
+    images: ["/og"],
   },
   robots: { index: true, follow: true }
 };

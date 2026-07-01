@@ -86,7 +86,7 @@ export default function AboutPage() {
           </div>
           <div className="mt-12 grid gap-6 sm:grid-cols-2">
             {values.map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="rounded-2xl border border-white/8 bg-[#080C18] p-6 transition-all hover:border-primary/20">
+              <div key={title} className="rounded-2xl border border-white/8 bg-[#080C18] p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5">
                 <span className="grid size-10 place-items-center rounded-xl bg-primary/10">
                   <Icon className="size-5 text-primary" />
                 </span>

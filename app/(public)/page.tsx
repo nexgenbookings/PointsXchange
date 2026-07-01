@@ -2,6 +2,7 @@ import { getPrograms } from "@/lib/data";
 import { Hero } from "@/components/home/hero";
 import { MarketActivity } from "@/components/home/market-activity";
 import { TrustMetrics } from "@/components/home/trust-metrics";
+import { ProtectionStrip } from "@/components/home/protection-strip";
 import { OfferExplainer } from "@/components/home/offer-explainer";
 import { Comparison } from "@/components/home/comparison";
 import { ProcessTimeline } from "@/components/home/timeline";
@@ -15,6 +16,7 @@ export default async function HomePage() {
       <Hero programs={programs} />
       <MarketActivity programs={programs} />
       <TrustMetrics />
+      <ProtectionStrip />
       <OfferExplainer />
       <Comparison />
       <ProcessTimeline />

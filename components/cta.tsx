@@ -4,7 +4,7 @@ import { whatsappNumber } from "@/lib/content";
 
 export function CTA({ title = "Turn your points into cash — faster than you think." }: { title?: string }) {
   return (
-    <section className="relative overflow-hidden bg-[#050505] text-white">
+    <section className="relative overflow-hidden bg-[#080C18] text-white">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -left-32 -top-32 size-96 rounded-full bg-primary/8 blur-3xl" />
         <div className="absolute -bottom-24 right-0 size-80 rounded-full bg-primary/6 blur-3xl" />

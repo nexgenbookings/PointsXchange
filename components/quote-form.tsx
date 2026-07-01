@@ -211,6 +211,10 @@ export function QuoteForm({ programs }: Props) {
           </div>
         </div>
 
+        <p className="rounded-lg border border-amber-500/15 bg-amber-500/5 px-3 py-2 text-xs leading-5 text-amber-400/70">
+          Note: Selling points may violate your loyalty program&apos;s terms of service. Review your program&apos;s policies before proceeding.
+        </p>
+
         <Button type="submit" disabled={pending} className="h-13 gap-2 rounded-xl text-base">
           {pending ? (
             <>

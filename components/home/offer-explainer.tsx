@@ -24,7 +24,7 @@ export function OfferExplainer() {
           className="max-w-xl"
         >
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Transparent Pricing</p>
-          <h2 className="mt-2 font-serif text-3xl font-semibold text-white sm:text-4xl">How offers are calculated.</h2>
+          <h2 className="mt-2 font-serif text-4xl font-semibold text-white sm:text-5xl">How offers are calculated.</h2>
           <p className="mt-3 text-[#A0A0A0]">
             Every offer is individually reviewed. No automated formulas, no black boxes.
           </p>
