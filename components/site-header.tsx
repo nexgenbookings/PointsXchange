@@ -13,6 +13,7 @@ const nav = [
   ["Programs", "/supported-programs"],
   ["Blog", "/blog"],
   ["FAQ", "/faq"],
+  ["About", "/about"],
   ["Contact", "/contact"]
 ];
 
