@@ -18,18 +18,24 @@ const nav = [
 
 export function Logo() {
   return (
-    <Link href="/" className="flex min-w-0 items-center gap-2.5" aria-label="Points Xchange home">
-      <Image
-        src="/points-xchange-logo.png"
-        alt="Points Xchange"
-        width={44}
-        height={44}
-        priority
-        className="size-9 shrink-0 rounded-lg object-cover sm:size-11"
-      />
-      <span className="truncate font-serif text-lg font-semibold tracking-tight sm:text-xl">
-        Points <span className="gold-text">Xchange</span>
-      </span>
+    <Link href="/" className="group flex min-w-0 items-center gap-3" aria-label="Points Xchange home">
+      <div className="relative shrink-0">
+        <div className="absolute -inset-1 rounded-xl bg-primary/20 blur-md transition-opacity duration-300 opacity-0 group-hover:opacity-100" />
+        <Image
+          src="/points-xchange-logo.png"
+          alt="Points Xchange"
+          width={44}
+          height={44}
+          priority
+          className="relative size-9 shrink-0 rounded-xl object-cover ring-1 ring-white/10 sm:size-10"
+        />
+      </div>
+      <div className="flex flex-col leading-none">
+        <span className="font-serif text-base font-semibold tracking-tight text-white sm:text-lg">
+          Points <span className="gold-text">Xchange</span>
+        </span>
+        <span className="text-[0.6rem] font-medium uppercase tracking-[0.18em] text-[#A0A0A0]">Points Brokerage</span>
+      </div>
     </Link>
   );
 }

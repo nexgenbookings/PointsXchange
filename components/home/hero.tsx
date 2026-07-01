@@ -3,7 +3,7 @@
 import { useState, useMemo, useActionState } from "react";
 import type React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronDown, LockKeyhole, MessageCircle } from "lucide-react";
+import { ArrowRight, ChevronDown, LockKeyhole, MessageCircle, Star } from "lucide-react";
 import Link from "next/link";
 import { submitLead } from "@/lib/actions";
 import { calculateQuote, type QuoteProgram } from "@/lib/quote";
@@ -67,21 +67,39 @@ export function Hero({ programs }: { programs: QuoteProgram[] }) {
 
   return (
     <section className="relative min-h-screen overflow-hidden bg-[#0A0A0A]">
-      {/* Ambient background */}
+      {/* Ambient background — warmer, more welcoming */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/4 top-0 h-[300px] w-[300px] -translate-x-1/2 rounded-full bg-primary/6 blur-[80px] sm:h-[600px] sm:w-[600px] sm:blur-[120px]" />
-        <div className="absolute right-0 top-1/3 h-48 w-48 rounded-full bg-primary/4 blur-[60px] sm:h-96 sm:w-96 sm:blur-[100px]" />
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+        {/* Main warm gold glow — top left */}
+        <div className="absolute -left-20 -top-20 h-[500px] w-[500px] rounded-full bg-primary/10 blur-[120px] sm:h-[700px] sm:w-[700px]" />
+        {/* Secondary warm glow — right */}
+        <div className="absolute -right-20 top-1/4 h-64 w-64 rounded-full bg-amber-500/8 blur-[80px] sm:h-[400px] sm:w-[400px] sm:blur-[100px]" />
+        {/* Bottom accent */}
+        <div className="absolute bottom-0 left-1/2 h-48 w-96 -translate-x-1/2 rounded-full bg-primary/6 blur-[80px]" />
+        {/* Top border shimmer */}
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+        {/* Subtle grid texture for warmth */}
+        <div
+          className="absolute inset-0 opacity-[0.025]"
+          style={{
+            backgroundImage: `radial-gradient(circle, #D4AF37 1px, transparent 1px)`,
+            backgroundSize: "40px 40px",
+          }}
+        />
       </div>
 
       <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-14 md:grid-cols-2 md:items-center md:gap-12 md:py-20 lg:gap-16 lg:px-8 lg:py-28">
 
         {/* Left — Headline */}
         <div>
+          {/* Trust badge — friendlier than "Private Points Brokerage" */}
           <FadeUp delay={0}>
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/8 px-4 py-1.5 text-xs font-semibold tracking-[0.15em] uppercase text-primary">
-              <span className="size-1.5 animate-pulse rounded-full bg-primary" />
-              Private Points Brokerage
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-4 py-1.5 text-xs font-semibold tracking-wide text-primary">
+              <span className="flex items-center gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="size-2.5 fill-primary text-primary" />
+                ))}
+              </span>
+              Trusted by sellers across the US
             </div>
           </FadeUp>
 
@@ -91,17 +109,25 @@ export function Hero({ programs }: { programs: QuoteProgram[] }) {
             </h1>
           </FadeUp>
 
-          <div className="mt-5 space-y-1.5">
-            {["without marketplaces.", "without the hassle.", "without waiting."].map((line, i) => (
-              <FadeUp key={line} delay={0.2 + i * 0.08}>
-                <p className="text-2xl font-light text-white/60 sm:text-3xl">{line}</p>
+          {/* Warmer, human sub-lines */}
+          <div className="mt-5 space-y-2">
+            {[
+              { text: "A real person reviews every offer." },
+              { text: "Clear pricing, no hidden fees." },
+              { text: "Paid within one business day." },
+            ].map((item, i) => (
+              <FadeUp key={item.text} delay={0.2 + i * 0.08}>
+                <div className="flex items-center gap-2.5">
+                  <span className="size-1.5 shrink-0 rounded-full bg-primary/70" />
+                  <p className="text-lg font-light text-white/70 sm:text-xl">{item.text}</p>
+                </div>
               </FadeUp>
             ))}
           </div>
 
           <FadeUp delay={0.4}>
             <p className="mt-8 max-w-md text-base leading-7 text-[#A0A0A0]">
-              Private point brokerage for hotel rewards, airline miles, and credit card points. We review balances manually and provide verified cash offers within one business day.
+              We buy hotel points, airline miles, and credit card rewards — and we pay fast. Every offer is reviewed by a real person, not an algorithm.
             </p>
           </FadeUp>
 
@@ -109,13 +135,13 @@ export function Hero({ programs }: { programs: QuoteProgram[] }) {
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Link
                 href="/instant-quote"
-                className="inline-flex h-11 items-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-black transition-all hover:bg-accent hover:shadow-lg hover:shadow-primary/20 active:scale-[0.97]"
+                className="inline-flex h-11 items-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-black transition-all hover:bg-accent hover:shadow-lg hover:shadow-primary/25 active:scale-[0.97]"
               >
                 Get Instant Quote <ArrowRight className="size-4" />
               </Link>
               <a
                 href="#how-it-works"
-                className="inline-flex h-11 items-center gap-2 rounded-full border border-white/10 px-6 text-sm font-semibold text-white/70 transition-all hover:border-white/20 hover:text-white"
+                className="inline-flex h-11 items-center gap-2 rounded-full border border-white/12 px-6 text-sm font-semibold text-white/70 transition-all hover:border-primary/30 hover:text-white"
               >
                 How It Works <ChevronDown className="size-4" />
               </a>
@@ -123,21 +149,17 @@ export function Hero({ programs }: { programs: QuoteProgram[] }) {
           </FadeUp>
 
           <FadeUp delay={0.6}>
-            <div className="mt-12 flex items-center gap-6 border-t border-white/8 pt-8 text-sm">
-              <div>
-                <p className="text-lg font-semibold text-white">18+</p>
-                <p className="text-[#A0A0A0]">Programs</p>
-              </div>
-              <div className="h-6 w-px bg-white/8" />
-              <div>
-                <p className="text-lg font-semibold text-white">2 days</p>
-                <p className="text-[#A0A0A0]">Avg. turnaround</p>
-              </div>
-              <div className="h-6 w-px bg-white/8" />
-              <div>
-                <p className="text-lg font-semibold text-white">ACH + Zelle</p>
-                <p className="text-[#A0A0A0]">Payment methods</p>
-              </div>
+            <div className="mt-12 grid grid-cols-3 gap-4 border-t border-white/8 pt-8">
+              {[
+                { value: "18+", label: "Programs supported" },
+                { value: "1–2 days", label: "Avg. turnaround" },
+                { value: "ACH + Zelle", label: "Payment methods" },
+              ].map(({ value, label }) => (
+                <div key={label} className="text-center sm:text-left">
+                  <p className="text-base font-semibold text-white sm:text-lg">{value}</p>
+                  <p className="mt-0.5 text-xs text-[#A0A0A0]">{label}</p>
+                </div>
+              ))}
             </div>
           </FadeUp>
         </div>
@@ -148,11 +170,13 @@ export function Hero({ programs }: { programs: QuoteProgram[] }) {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="rounded-2xl border border-white/8 bg-[#111] p-4 shadow-2xl shadow-black/50 sm:p-6 md:p-8">
+          {/* Subtle warm glow behind card */}
+          <div className="absolute -inset-4 rounded-3xl bg-primary/5 blur-2xl" />
+          <div className="relative rounded-2xl border border-white/10 bg-[#111] p-4 shadow-2xl shadow-black/60 ring-1 ring-primary/8 sm:p-6 md:p-8">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Quote Calculator</p>
-                <h2 className="mt-1 text-xl font-semibold text-white">Estimate your payout</h2>
+                <h2 className="mt-1 text-xl font-semibold text-white">See what your points are worth</h2>
               </div>
               <span className="flex items-center gap-1.5 rounded-full border border-green-500/20 bg-green-500/8 px-3 py-1 text-xs font-semibold text-green-400">
                 <span className="size-1.5 animate-pulse rounded-full bg-green-400" />
@@ -195,12 +219,11 @@ export function Hero({ programs }: { programs: QuoteProgram[] }) {
                   </div>
                   <PremiumSlider value={points} min={10000} max={1000000} onChange={setPoints} />
                   <div className="relative h-3 text-[0.6rem] text-[#A0A0A0] sm:text-[0.65rem]">
-                    {/* positions: (value - 10K) / (1M - 10K) * 100 */}
-                    <span className="absolute left-0 -translate-x-0">10K</span>
+                    <span className="absolute left-0">10K</span>
                     <span className="absolute -translate-x-1/2" style={{ left: "24.74%" }}>250K</span>
                     <span className="absolute -translate-x-1/2" style={{ left: "49.49%" }}>500K</span>
                     <span className="absolute -translate-x-1/2" style={{ left: "74.24%" }}>750K</span>
-                    <span className="absolute right-0 translate-x-0">1M</span>
+                    <span className="absolute right-0">1M</span>
                   </div>
                 </div>
 
@@ -217,7 +240,7 @@ export function Hero({ programs }: { programs: QuoteProgram[] }) {
                           : "border border-white/8 text-[#A0A0A0] hover:border-primary/30 hover:text-white"
                       }`}
                     >
-                      {v >= 1000000 ? "1M" : v >= 100000 ? `${v / 1000}k` : `${v / 1000}k`}
+                      {v >= 1000000 ? "1M" : `${v / 1000}k`}
                     </button>
                   ))}
                 </div>
@@ -247,7 +270,7 @@ export function Hero({ programs }: { programs: QuoteProgram[] }) {
                     />
                   </div>
                   <p className="mt-2 text-xs text-[#A0A0A0]">
-                    {preview?.belowMinimum ? preview.message : "Submit details for a verified offer from our desk."}
+                    {preview?.belowMinimum ? preview.message : "This transaction may not meet our minimum requirements. Contact us for a custom review."}
                   </p>
                 </div>
 
@@ -272,7 +295,7 @@ export function Hero({ programs }: { programs: QuoteProgram[] }) {
                       type={type}
                       placeholder={placeholder}
                       required
-                      className="rounded-xl border border-white/8 bg-white/5 px-3 py-2.5 text-sm text-white placeholder-[#A0A0A0]/50 focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
+                      className="rounded-xl border border-white/8 bg-white/5 px-3 py-2.5 text-sm text-white placeholder-[#A0A0A0]/60 focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
                     />
                   ))}
                 </div>
@@ -289,6 +312,8 @@ export function Hero({ programs }: { programs: QuoteProgram[] }) {
                 {state?.message && !state.ok && (
                   <p className="text-center text-sm text-red-400">{state.message}</p>
                 )}
+
+                <p className="text-center text-xs text-[#A0A0A0]/60">No commitment required. We&apos;ll follow up within one business day.</p>
               </form>
             ) : (
               <motion.div
@@ -297,21 +322,21 @@ export function Hero({ programs }: { programs: QuoteProgram[] }) {
                 className="mt-6 space-y-4"
               >
                 <div className="rounded-xl border border-green-500/20 bg-green-500/8 p-4 text-center">
-                  <p className="text-sm font-semibold text-green-400">Offer request received</p>
-                  <p className="mt-1 text-xs text-[#A0A0A0]">Our desk will review and follow up within one business day.</p>
+                  <p className="text-sm font-semibold text-green-400">Request received — thank you!</p>
+                  <p className="mt-1 text-xs text-[#A0A0A0]">Our desk will review your balance and follow up within one business day.</p>
                 </div>
                 <div className="rounded-xl border border-white/8 bg-white/[0.03] p-5 text-center">
                   <p className="text-xs text-[#A0A0A0]">Estimated payout range</p>
                   <p className="mt-2 text-4xl font-semibold text-primary">
                     {formatCurrency(state.quote!.low)} – {formatCurrency(state.quote!.high)}
                   </p>
-                  <p className="mt-2 text-xs text-amber-400">This estimate is valid for 24 hours</p>
+                  <p className="mt-2 text-xs text-amber-400/80">Valid for 24 hours · Exact offer after desk review</p>
                 </div>
                 <a
                   href={`https://wa.me/${whatsappNumber.replace("+", "")}`}
-                  className="flex items-center justify-center gap-2 rounded-xl border border-white/8 py-3 text-sm font-semibold text-white transition-all hover:bg-white/5"
+                  className="flex items-center justify-center gap-2 rounded-xl border border-white/8 py-3 text-sm font-semibold text-white transition-all hover:border-primary/20 hover:bg-white/5"
                 >
-                  <MessageCircle className="size-4 text-primary" /> Follow up on WhatsApp
+                  <MessageCircle className="size-4 text-primary" /> Chat with us on WhatsApp
                 </a>
               </motion.div>
             )}
