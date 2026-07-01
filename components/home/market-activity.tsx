@@ -56,7 +56,7 @@ export function MarketActivity({ programs }: { programs: QuoteProgram[] }) {
   }, [programs, paused]);
 
   return (
-    <section className="border-t border-white/8 bg-[#0A0A0A]">
+    <section className="border-t border-white/8 bg-[#080C18]">
       <div className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -103,7 +103,7 @@ export function MarketActivity({ programs }: { programs: QuoteProgram[] }) {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.35, delay: i * 0.05 }}
                   whileHover={{ y: -2, borderColor: "rgba(212,175,55,0.25)" }}
-                  className="group rounded-2xl border border-white/8 bg-[#111] p-5 transition-colors"
+                  className="group rounded-2xl border border-white/8 bg-[#111827] p-5 transition-colors"
                 >
                   <div className="flex items-start justify-between">
                     <div className="min-w-0 flex-1">

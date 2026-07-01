@@ -13,7 +13,7 @@ const inputs = [
 
 export function OfferExplainer() {
   return (
-    <section className="bg-[#0A0A0A]">
+    <section className="bg-[#080C18]">
       <div className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -39,7 +39,7 @@ export function OfferExplainer() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="flex items-center justify-between rounded-xl border border-white/8 bg-[#111] px-4 py-3"
+                className="flex items-center justify-between rounded-xl border border-white/8 bg-[#111827] px-4 py-3"
               >
                 <div>
                   <p className="text-sm font-semibold text-white">{item.label}</p>

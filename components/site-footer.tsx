@@ -19,7 +19,7 @@ const legal = [
 
 export function SiteFooter() {
   return (
-    <footer className="border-t bg-[#080808] text-white">
+    <footer className="border-t bg-[#080C18] text-white">
       <div className="mx-auto max-w-7xl px-4 py-14 lg:px-8">
         <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-[1.8fr_1fr_1fr_1.2fr]">
           <div>

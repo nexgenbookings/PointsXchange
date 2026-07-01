@@ -39,7 +39,7 @@ function CountUp({ end, prefix = "", suffix = "", decimals = 0, duration = 2 }: 
 
 export function TrustMetrics() {
   return (
-    <section className="border-y border-white/8 bg-[#111]">
+    <section className="border-y border-white/8 bg-[#111827]">
       <div className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-20">
         <motion.p
           initial={{ opacity: 0 }}

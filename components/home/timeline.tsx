@@ -40,7 +40,7 @@ export function ProcessTimeline() {
   const [active, setActive] = useState<number | null>(null);
 
   return (
-    <section id="how-it-works" className="bg-[#0A0A0A]">
+    <section id="how-it-works" className="bg-[#080C18]">
       <div className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -83,7 +83,7 @@ export function ProcessTimeline() {
                 <div className={`relative z-10 mx-auto flex size-12 items-center justify-center rounded-full border transition-all duration-200 ${
                   active === i
                     ? "border-primary bg-primary text-black shadow-lg shadow-primary/30"
-                    : "border-white/15 bg-[#111] text-white"
+                    : "border-white/15 bg-[#111827] text-white"
                 }`}>
                   <span className="text-sm font-bold">{step.n}</span>
                 </div>
@@ -123,7 +123,7 @@ export function ProcessTimeline() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.07 }}
               onClick={() => setActive(active === i ? null : i)}
-              className="cursor-pointer rounded-2xl border border-white/8 bg-[#111] p-4"
+              className="cursor-pointer rounded-2xl border border-white/8 bg-[#111827] p-4"
             >
               <div className="flex items-center gap-4">
                 <span className={`grid size-10 shrink-0 place-items-center rounded-full text-sm font-bold transition-all ${

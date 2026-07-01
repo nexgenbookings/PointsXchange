@@ -23,7 +23,7 @@ const steps = [
 
 export default function SellPointsPage() {
   return (
-    <div className="bg-[#0A0A0A]">
+    <div className="bg-[#080C18]">
       {/* Hero */}
       <div className="relative overflow-hidden border-b border-white/8">
         <div className="pointer-events-none absolute inset-0">
@@ -55,7 +55,7 @@ export default function SellPointsPage() {
         <h2 className="mt-2 font-serif text-2xl font-semibold text-white sm:text-3xl">Three categories. All programs.</h2>
         <div className="mt-8 grid gap-4 md:grid-cols-3">
           {types.map(({ label, desc, icon: Icon }) => (
-            <div key={label} className="rounded-2xl border border-white/8 bg-[#111] p-6 transition-all hover:border-primary/20">
+            <div key={label} className="rounded-2xl border border-white/8 bg-[#111827] p-6 transition-all hover:border-primary/20">
               <span className="grid size-10 place-items-center rounded-xl bg-primary/10">
                 <Icon className="size-5 text-primary" />
               </span>
@@ -67,13 +67,13 @@ export default function SellPointsPage() {
       </div>
 
       {/* Process */}
-      <div className="border-t border-white/8 bg-[#111]">
+      <div className="border-t border-white/8 bg-[#111827]">
         <div className="mx-auto max-w-5xl px-4 py-14 lg:px-8">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">The process</p>
           <h2 className="mt-2 font-serif text-2xl font-semibold text-white sm:text-3xl">Four steps to payout.</h2>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map(([title, desc], i) => (
-              <div key={title} className="rounded-2xl border border-white/8 bg-[#0A0A0A] p-5">
+              <div key={title} className="rounded-2xl border border-white/8 bg-[#080C18] p-5">
                 <span className="flex size-8 items-center justify-center rounded-full bg-primary text-xs font-bold text-black">
                   {String(i + 1).padStart(2, "0")}
                 </span>

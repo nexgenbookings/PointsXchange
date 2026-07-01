@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <div className="bg-[#0A0A0A]">
+    <div className="bg-[#080C18]">
       <div className="relative overflow-hidden border-b border-white/8">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent" />
         <div className="mx-auto max-w-3xl px-4 py-14 lg:px-8">

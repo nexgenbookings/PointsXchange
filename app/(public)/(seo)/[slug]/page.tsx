@@ -19,7 +19,7 @@ export default async function SeoLandingPage({ params }: { params: Promise<{ slu
   const page = seoPages.find((item) => item.slug === slug);
   if (!page) notFound();
   return (
-    <div className="bg-[#0A0A0A]">
+    <div className="bg-[#080C18]">
       <div className="relative overflow-hidden border-b border-white/8">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent" />
         <div className="mx-auto max-w-5xl px-4 py-14 lg:px-8">
@@ -43,7 +43,7 @@ export default async function SeoLandingPage({ params }: { params: Promise<{ slu
           <Link href="/instant-quote" className="rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-black transition-colors hover:bg-accent">Get Instant Quote</Link>
           <Link href="/supported-programs" className="rounded-xl border border-white/8 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10">Supported Programs</Link>
         </div>
-        <div className="mt-12 rounded-2xl border border-white/8 bg-[#111] p-6">
+        <div className="mt-12 rounded-2xl border border-white/8 bg-[#111827] p-6">
           <h2 className="font-serif text-2xl font-semibold text-white">FAQs About {page.title}</h2>
           {["Can I get paid quickly?", "Do you offer exact pricing online?", "Can you beat another offer?"].map((question) => (
             <div key={question} className="mt-6 border-t border-white/8 pt-5">

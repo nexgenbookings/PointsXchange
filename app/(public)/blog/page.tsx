@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default async function BlogPage() {
   const posts = await getBlogPosts();
   return (
-    <div className="bg-[#0A0A0A]">
+    <div className="bg-[#080C18]">
       <div className="relative overflow-hidden border-b border-white/8">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent" />
@@ -29,7 +29,7 @@ export default async function BlogPage() {
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="group rounded-2xl border border-white/8 bg-[#111] p-6 transition-all hover:border-primary/20"
+              className="group rounded-2xl border border-white/8 bg-[#111827] p-6 transition-all hover:border-primary/20"
             >
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary">Article</p>
               <h2 className="mt-3 font-serif text-xl font-semibold leading-snug text-white transition-colors group-hover:text-primary/90">

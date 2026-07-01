@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="bg-[#0A0A0A]">
+    <div className="bg-[#080C18]">
       <div className="relative overflow-hidden border-b border-white/8">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent" />
@@ -29,7 +29,7 @@ export default function ContactPage() {
           <div className="mt-8 space-y-3">
             <a
               href={`mailto:${contactEmail}`}
-              className="flex items-center gap-3 rounded-2xl border border-white/8 bg-[#111] px-5 py-4 transition-all hover:border-primary/20"
+              className="flex items-center gap-3 rounded-2xl border border-white/8 bg-[#111827] px-5 py-4 transition-all hover:border-primary/20"
             >
               <span className="grid size-9 place-items-center rounded-xl bg-primary/10">
                 <Mail className="size-4 text-primary" />
@@ -41,7 +41,7 @@ export default function ContactPage() {
             </a>
             <a
               href={`https://wa.me/${whatsappNumber.replace("+", "")}`}
-              className="flex items-center gap-3 rounded-2xl border border-white/8 bg-[#111] px-5 py-4 transition-all hover:border-primary/20"
+              className="flex items-center gap-3 rounded-2xl border border-white/8 bg-[#111827] px-5 py-4 transition-all hover:border-primary/20"
             >
               <span className="grid size-9 place-items-center rounded-xl bg-primary/10">
                 <MessageCircle className="size-4 text-primary" />
@@ -61,7 +61,7 @@ export default function ContactPage() {
           </a>
         </div>
 
-        <div className="rounded-2xl border border-white/8 bg-[#111] p-6 sm:p-8">
+        <div className="rounded-2xl border border-white/8 bg-[#111827] p-6 sm:p-8">
           <p className="font-semibold text-white">Send a message</p>
           <p className="mt-1 text-sm text-[#A0A0A0]">We respond within one business day.</p>
           <div className="mt-6">

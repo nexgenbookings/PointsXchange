@@ -5,7 +5,7 @@ export async function TestimonialsSection() {
   if (!testimonials.length) return null;
 
   return (
-    <section className="border-t border-white/8 bg-[#0A0A0A]">
+    <section className="border-t border-white/8 bg-[#080C18]">
       <div className="mx-auto max-w-7xl px-4 py-16 lg:px-8 lg:py-20">
         <div className="text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">What sellers say</p>
@@ -16,7 +16,7 @@ export async function TestimonialsSection() {
           {testimonials.map((t) => (
             <div
               key={t.id}
-              className="flex flex-col rounded-2xl border border-white/8 bg-[#111] p-6"
+              className="flex flex-col rounded-2xl border border-white/8 bg-[#111827] p-6"
             >
               {/* Stars */}
               <div className="flex gap-1">

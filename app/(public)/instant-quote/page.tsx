@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default async function InstantQuotePage() {
   const programs = await getPrograms();
   return (
-    <div className="relative overflow-hidden bg-[#0A0A0A]">
+    <div className="relative overflow-hidden bg-[#080C18]">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/4 top-0 h-96 w-96 -translate-x-1/2 rounded-full bg-primary/6 blur-[100px]" />
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />

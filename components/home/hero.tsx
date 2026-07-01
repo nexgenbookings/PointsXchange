@@ -42,7 +42,7 @@ function PremiumSlider({ value, min, max, onChange }: { value: number; min: numb
         className="absolute inset-0 w-full cursor-pointer opacity-0 z-10"
       />
       <div
-        className="absolute size-5 rounded-full border-2 border-primary bg-[#111] shadow-lg shadow-primary/30 pointer-events-none"
+        className="absolute size-5 rounded-full border-2 border-primary bg-[#111827] shadow-lg shadow-primary/30 pointer-events-none"
         style={{ left: `calc(${pct}% - 10px)` }}
       />
     </div>
@@ -66,7 +66,7 @@ export function Hero({ programs }: { programs: QuoteProgram[] }) {
   const presets = [25000, 50000, 100000, 250000, 500000];
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#0A0A0A]">
+    <section className="relative min-h-screen overflow-hidden bg-[#080C18]">
       {/* Ambient background — warmer, more welcoming */}
       <div className="pointer-events-none absolute inset-0">
         {/* Main warm gold glow — top left */}
@@ -172,7 +172,7 @@ export function Hero({ programs }: { programs: QuoteProgram[] }) {
         >
           {/* Subtle warm glow behind card */}
           <div className="absolute -inset-4 rounded-3xl bg-primary/5 blur-2xl" />
-          <div className="relative rounded-2xl border border-white/10 bg-[#111] p-4 shadow-2xl shadow-black/60 ring-1 ring-primary/8 sm:p-6 md:p-8">
+          <div className="relative rounded-2xl border border-white/10 bg-[#111827] p-4 shadow-2xl shadow-black/60 ring-1 ring-primary/8 sm:p-6 md:p-8">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Quote Calculator</p>
@@ -197,7 +197,7 @@ export function Hero({ programs }: { programs: QuoteProgram[] }) {
                       className="w-full appearance-none rounded-xl border border-white/8 bg-white/5 px-4 py-3 text-sm text-white focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
                     >
                       {programs.map((p) => (
-                        <option key={p.id} value={p.id} className="bg-[#111]">{p.name}</option>
+                        <option key={p.id} value={p.id} className="bg-[#111827]">{p.name}</option>
                       ))}
                     </select>
                     <ChevronDown className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-[#A0A0A0]" />

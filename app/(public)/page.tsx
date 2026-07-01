@@ -11,7 +11,7 @@ import { FinalCTA } from "@/components/home/final-cta";
 export default async function HomePage() {
   const programs = await getPrograms();
   return (
-    <div className="bg-[#0A0A0A]">
+    <div className="bg-[#080C18]">
       <Hero programs={programs} />
       <MarketActivity programs={programs} />
       <TrustMetrics />

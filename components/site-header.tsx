@@ -54,8 +54,8 @@ export function SiteHeader() {
     <header
       className={`sticky top-0 z-40 border-b transition-all duration-300 ${
         scrolled
-          ? "border-white/8 bg-[#0A0A0A]/95 shadow-lg shadow-black/40 backdrop-blur-md"
-          : "border-white/5 bg-[#0A0A0A]/80 backdrop-blur-sm"
+          ? "border-white/8 bg-[#080C18]/95 shadow-lg shadow-black/40 backdrop-blur-md"
+          : "border-white/5 bg-[#080C18]/80 backdrop-blur-sm"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 lg:px-8 lg:py-3.5">
@@ -100,7 +100,7 @@ export function SiteHeader() {
           open ? "max-h-[32rem] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <nav className="bg-[#0A0A0A] px-4 pb-3 pt-1">
+        <nav className="bg-[#080C18] px-4 pb-3 pt-1">
           {nav.map(([label, href]) => (
             <Link
               key={href}

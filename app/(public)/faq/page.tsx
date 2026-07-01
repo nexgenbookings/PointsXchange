@@ -12,7 +12,7 @@ export default async function FAQPage() {
   // FAQSection has its own built-in questions — DB FAQs shown below if available
   const rows = await getFaqs();
   return (
-    <div className="bg-[#0A0A0A]">
+    <div className="bg-[#080C18]">
       <div className="relative overflow-hidden border-b border-white/8">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent" />
@@ -26,7 +26,7 @@ export default async function FAQPage() {
       <FAQSection />
 
       {rows.length > 0 && (
-        <div className="border-t border-white/8 bg-[#0A0A0A]">
+        <div className="border-t border-white/8 bg-[#080C18]">
           <div className="mx-auto max-w-3xl px-4 py-14 lg:px-8">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">More questions</p>
             <div className="mt-6 divide-y divide-white/8">
