@@ -25,7 +25,7 @@ export function OfferExplainer() {
         >
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Transparent Pricing</p>
           <h2 className="mt-2 font-serif text-4xl font-semibold text-white sm:text-5xl">How offers are calculated.</h2>
-          <p className="mt-3 text-[#A0A0A0]">
+          <p className="mt-3 text-white/60">
             Every offer is individually reviewed. No automated formulas, no black boxes.
           </p>
         </motion.div>
@@ -44,7 +44,7 @@ export function OfferExplainer() {
               >
                 <div>
                   <p className="text-sm font-semibold text-white">{item.label}</p>
-                  <p className="text-xs text-[#A0A0A0]">{item.desc}</p>
+                  <p className="text-xs text-white/60">{item.desc}</p>
                 </div>
                 <div className="size-2 rounded-full bg-primary/60" />
               </motion.div>
@@ -81,8 +81,8 @@ export function OfferExplainer() {
                 <span className="text-xl font-bold">$</span>
               </div>
               <p className="mt-4 text-xl font-semibold text-white">Verified Cash Offer</p>
-              <p className="mt-2 text-sm text-[#A0A0A0]">Reviewed by a human desk</p>
-              <p className="mt-1 text-sm text-[#A0A0A0]">Paid via ACH or Zelle</p>
+              <p className="mt-2 text-sm text-white/60">Reviewed by a human desk</p>
+              <p className="mt-1 text-sm text-white/60">Paid via ACH or Zelle</p>
               <div className="mt-4 rounded-lg border border-primary/20 bg-primary/8 px-4 py-2 text-xs font-semibold text-primary">
                 Within 1 business day
               </div>

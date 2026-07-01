@@ -13,7 +13,7 @@ const demandMeta: Record<Demand, { color: string; bg: string; bar: string }> = {
   Strong:   { color: "text-green-400",  bg: "bg-green-500/10",  bar: "bg-green-500" },
   Moderate: { color: "text-yellow-400", bg: "bg-yellow-500/10", bar: "bg-yellow-500" },
   Active:   { color: "text-blue-400",   bg: "bg-blue-500/10",   bar: "bg-blue-500" },
-  Custom:   { color: "text-[#A0A0A0]",  bg: "bg-white/5",       bar: "bg-white/30" },
+  Custom:   { color: "text-white/60",  bg: "bg-white/5",       bar: "bg-white/30" },
 };
 
 const demandByCategory: Record<string, Demand> = {
@@ -25,7 +25,7 @@ const demandByCategory: Record<string, Demand> = {
 const trendByIndex = [
   { icon: TrendingUp,   label: "+steady",  color: "text-green-400" },
   { icon: TrendingUp,   label: "+strong",  color: "text-green-400" },
-  { icon: Minus,        label: "stable",   color: "text-[#A0A0A0]" },
+  { icon: Minus,        label: "stable",   color: "text-white/60" },
   { icon: TrendingDown, label: "review",   color: "text-yellow-400" },
   { icon: TrendingUp,   label: "+active",  color: "text-green-400" },
   { icon: TrendingUp,   label: "+premium", color: "text-green-400" },
@@ -69,7 +69,7 @@ export function MarketActivity({ programs }: { programs: QuoteProgram[] }) {
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Live Desk</p>
             <h2 className="mt-2 font-serif text-4xl font-semibold text-white sm:text-5xl">Current market activity.</h2>
           </div>
-          <div className="flex items-center gap-2 text-sm text-[#A0A0A0]">
+          <div className="flex items-center gap-2 text-sm text-white/60">
             <span className="size-2 animate-pulse rounded-full bg-green-400" />
             Desk is actively buying
           </div>
@@ -108,7 +108,7 @@ export function MarketActivity({ programs }: { programs: QuoteProgram[] }) {
                   <div className="flex items-start justify-between">
                     <div className="min-w-0 flex-1">
                       <p className="truncate font-semibold text-white">{program.name}</p>
-                      <p className="mt-0.5 text-xs capitalize text-[#A0A0A0]">
+                      <p className="mt-0.5 text-xs capitalize text-white/60">
                         {program.category?.replace("_", " ").toLowerCase()}
                       </p>
                     </div>
@@ -120,7 +120,7 @@ export function MarketActivity({ programs }: { programs: QuoteProgram[] }) {
 
                   <div className="mt-4">
                     <div className="flex items-center justify-between">
-                      <p className="text-xs text-[#A0A0A0]">Rate range</p>
+                      <p className="text-xs text-white/60">Rate range</p>
                       <div className={`flex items-center gap-1 text-xs font-medium ${trend.color}`}>
                         <TrendIcon className="size-3" />
                         {trend.label}
@@ -128,7 +128,7 @@ export function MarketActivity({ programs }: { programs: QuoteProgram[] }) {
                     </div>
                     <p className="mt-1 text-lg font-semibold tabular-nums text-white">
                       {formatCurrency(low * 1000)} – {formatCurrency(high * 1000)}
-                      <span className="ml-1 text-xs font-normal text-[#A0A0A0]">per 1k pts</span>
+                      <span className="ml-1 text-xs font-normal text-white/60">per 1k pts</span>
                     </p>
                   </div>
 

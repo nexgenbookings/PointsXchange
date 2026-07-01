@@ -54,16 +54,16 @@ export function QuoteForm({ programs }: Props) {
           </span>
           <div>
             <p className="font-semibold">Offer submitted</p>
-            <p className="text-sm text-[#A0A0A0]">Our desk will review and follow up shortly.</p>
+            <p className="text-sm text-white/60">Our desk will review and follow up shortly.</p>
           </div>
         </div>
         <div className="mt-6 rounded-xl bg-[#080C18] p-5 text-white">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#A0A0A0]">Estimated payout range</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/60">Estimated payout range</p>
           <p className="mt-2 text-3xl font-semibold text-primary">
             {formatCurrency(state.quote.low)} – {formatCurrency(state.quote.high)}
           </p>
           <p className="mt-2 text-xs text-amber-400">This estimate is valid for 24 hours</p>
-          <p className="mt-1 text-xs text-[#A0A0A0]">A confirmation has been sent to your email.</p>
+          <p className="mt-1 text-xs text-white/60">A confirmation has been sent to your email.</p>
         </div>
         {state.message && (
           <p className="mt-3 text-sm font-medium text-green-400">{state.message}</p>
@@ -82,11 +82,11 @@ export function QuoteForm({ programs }: Props) {
         <div className="min-w-0 flex-1">
           <p className="text-[0.6rem] sm:text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-primary">Private Offer Desk</p>
           <h2 className="font-serif text-xl font-semibold leading-tight sm:text-2xl">Estimate your payout</h2>
-          <p className="mt-0.5 text-xs text-[#A0A0A0]">Choose a program, set a balance, get a range.</p>
+          <p className="mt-0.5 text-xs text-white/60">Choose a program, set a balance, get a range.</p>
         </div>
         <div className="hidden shrink-0 rounded-xl border border-white/8 bg-white/5 px-3 py-2 text-right text-xs sm:block">
           <p className="font-semibold text-green-400">Live desk</p>
-          <p className="text-[#A0A0A0]">ACH · Zelle</p>
+          <p className="text-white/60">ACH · Zelle</p>
         </div>
       </div>
 
@@ -101,7 +101,7 @@ export function QuoteForm({ programs }: Props) {
               className={`flex h-9 items-center justify-center gap-1.5 rounded-lg text-xs font-semibold transition-all duration-150 ${
                 category === value
                   ? "bg-black text-primary shadow-sm"
-                  : "text-[#A0A0A0] hover:bg-white/8 hover:text-white"
+                  : "text-white/60 hover:bg-white/8 hover:text-white"
               }`}
             >
               <Icon className="size-3.5" />
@@ -149,7 +149,7 @@ export function QuoteForm({ programs }: Props) {
               className={`rounded-lg border py-2 text-xs font-semibold transition-all duration-150 active:scale-[0.97] ${
                 pointsAmount === value
                   ? "border-primary bg-primary/15 text-white shadow-sm"
-                  : "border border-white/8 bg-white/5 text-[#A0A0A0] hover:border-primary/50 hover:text-white"
+                  : "border border-white/8 bg-white/5 text-white/60 hover:border-primary/50 hover:text-white"
               }`}
             >
               {value >= 100000 ? `${value / 1000}k` : value.toLocaleString()}
@@ -174,7 +174,7 @@ export function QuoteForm({ programs }: Props) {
             <p className="flex items-center gap-1.5 text-sm font-semibold">
               <LockKeyhole className="size-3.5 text-primary" /> Indicative range
             </p>
-            <p className="text-[0.6rem] sm:text-[0.65rem] font-medium text-[#A0A0A0]">Not a public formula</p>
+            <p className="text-[0.6rem] sm:text-[0.65rem] font-medium text-white/60">Not a public formula</p>
           </div>
           <p className="mt-2 text-2xl font-semibold tabular-nums sm:text-3xl">
             {preview ? `${formatCurrency(preview.low)} – ${formatCurrency(preview.high)}` : "Select a program"}
@@ -185,7 +185,7 @@ export function QuoteForm({ programs }: Props) {
               style={{ width: `${progress}%` }}
             />
           </div>
-          <p className="mt-2.5 text-xs leading-5 text-[#A0A0A0]">
+          <p className="mt-2.5 text-xs leading-5 text-white/60">
             {preview?.belowMinimum
               ? preview.message
               : "Exact offer requires contact details so our desk can verify your balance."}

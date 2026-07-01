@@ -52,7 +52,7 @@ export function ProcessTimeline() {
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">The process</p>
             <h2 className="mt-2 font-serif text-4xl font-semibold text-white sm:text-5xl">From balance to payout.</h2>
           </div>
-          <p className="max-w-sm text-sm text-[#A0A0A0]">Hover each step to learn more. Most transactions complete within one business day.</p>
+          <p className="max-w-sm text-sm text-white/60">Hover each step to learn more. Most transactions complete within one business day.</p>
         </motion.div>
 
         {/* Desktop horizontal timeline */}
@@ -92,7 +92,7 @@ export function ProcessTimeline() {
                   <p className={`text-sm font-semibold transition-colors ${active === i ? "text-white" : "text-white/70"}`}>
                     {step.title}
                   </p>
-                  <p className="mt-1 text-xs text-[#A0A0A0]">{step.short}</p>
+                  <p className="mt-1 text-xs text-white/60">{step.short}</p>
 
                   <AnimatePresence>
                     {active === i && (
@@ -103,7 +103,7 @@ export function ProcessTimeline() {
                         transition={{ duration: 0.2 }}
                         className="mt-3 overflow-hidden rounded-xl border border-primary/20 bg-primary/5 p-3 text-left"
                       >
-                        <p className="text-xs leading-5 text-[#A0A0A0]">{step.detail}</p>
+                        <p className="text-xs leading-5 text-white/60">{step.detail}</p>
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -133,7 +133,7 @@ export function ProcessTimeline() {
                 </span>
                 <div>
                   <p className="font-semibold text-white">{step.title}</p>
-                  <p className="text-xs text-[#A0A0A0]">{step.short}</p>
+                  <p className="text-xs text-white/60">{step.short}</p>
                 </div>
               </div>
               <AnimatePresence>
@@ -142,7 +142,7 @@ export function ProcessTimeline() {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
-                    className="mt-3 overflow-hidden pl-14 text-sm leading-6 text-[#A0A0A0]"
+                    className="mt-3 overflow-hidden pl-14 text-sm leading-6 text-white/60"
                   >
                     {step.detail}
                   </motion.p>

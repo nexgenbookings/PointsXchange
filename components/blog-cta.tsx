@@ -8,7 +8,7 @@ export function BlogCTA() {
       <h3 className="mt-2 font-serif text-2xl font-semibold text-white sm:text-3xl">
         Ready to turn your points into cash?
       </h3>
-      <p className="mt-3 text-sm leading-7 text-[#A0A0A0]">
+      <p className="mt-3 text-sm leading-7 text-white/60">
         Get a verified offer range in under 60 seconds. No account required, no commitments — just a real number from our desk.
       </p>
       <Link

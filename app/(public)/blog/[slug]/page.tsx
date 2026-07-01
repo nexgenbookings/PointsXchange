@@ -25,7 +25,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <div className="mx-auto max-w-3xl px-4 py-14 lg:px-8">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Blog</p>
           <h1 className="mt-3 font-serif text-4xl font-semibold text-white sm:text-5xl">{post.title}</h1>
-          <p className="mt-5 text-lg leading-8 text-[#A0A0A0]">{post.excerpt}</p>
+          <p className="mt-5 text-lg leading-8 text-white/60">{post.excerpt}</p>
         </div>
       </div>
       <article className="mx-auto max-w-3xl px-4 py-14 lg:px-8">

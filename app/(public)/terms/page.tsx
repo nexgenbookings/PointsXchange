@@ -14,12 +14,12 @@ export default function TermsPage() {
         {/* Account Risk Disclaimer — prominent */}
         <div className="rounded-2xl border border-primary/30 bg-primary/5 p-6">
           <p className="text-sm font-bold uppercase tracking-[0.14em] text-primary">Important — Account Risk Disclaimer</p>
-          <p className="mt-3 leading-7 text-[#A0A0A0]">
+          <p className="mt-3 leading-7 text-white/60">
             Selling, brokering, or transferring loyalty points or miles may violate the terms and conditions of the applicable loyalty program. <strong className="text-white">Points Xchange accepts no responsibility whatsoever for any account suspension, account closure, point forfeiture, or any other action taken by a loyalty program or financial institution against your account as a result of entering into or completing a transaction with us.</strong> You transact entirely at your own risk. By using our services, you confirm that you have reviewed your program&apos;s terms of service and accept full responsibility for any consequences to your account.
           </p>
         </div>
 
-        <div className="space-y-6 text-[#A0A0A0]">
+        <div className="space-y-6 text-white/60">
           <section>
             <h2 className="font-serif text-xl font-semibold text-white">Quotes and Offers</h2>
             <p className="mt-3 leading-7">All quotes provided through our calculator or desk are estimates only. No offer is binding until confirmed in writing by Points Xchange. We reserve the right to withdraw, adjust, or decline any offer at any time prior to a confirmed agreement.</p>

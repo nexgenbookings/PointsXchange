@@ -35,7 +35,7 @@ export function Logo() {
         <span className="font-serif text-base font-semibold tracking-tight text-white sm:text-lg">
           Points <span className="gold-text">Xchange</span>
         </span>
-        <span className="text-[0.6rem] font-medium uppercase tracking-[0.18em] text-[#A0A0A0]">Points Brokerage</span>
+        <span className="text-[0.6rem] font-medium uppercase tracking-[0.18em] text-white/60">Points Brokerage</span>
       </div>
     </Link>
   );

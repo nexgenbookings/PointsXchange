@@ -13,11 +13,11 @@ export default function PrivacyPage() {
         <div className="mx-auto max-w-3xl px-4 py-14 lg:px-8">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Legal</p>
           <h1 className="mt-3 font-serif text-4xl font-semibold text-white sm:text-5xl">Privacy Policy</h1>
-          <p className="mt-4 text-sm text-[#A0A0A0]">Last updated: June 2026</p>
+          <p className="mt-4 text-sm text-white/60">Last updated: June 2026</p>
         </div>
       </div>
 
-      <div className="mx-auto max-w-3xl space-y-10 px-4 py-14 lg:px-8 text-[#A0A0A0]">
+      <div className="mx-auto max-w-3xl space-y-10 px-4 py-14 lg:px-8 text-white/60">
 
         <section>
           <h2 className="font-serif text-xl font-semibold text-white">Overview</h2>

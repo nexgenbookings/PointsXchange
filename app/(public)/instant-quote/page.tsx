@@ -21,7 +21,7 @@ export default async function InstantQuotePage() {
           <h1 className="mt-3 font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl">
             Estimate your payout range.
           </h1>
-          <p className="mt-5 text-base leading-7 text-[#A0A0A0]">
+          <p className="mt-5 text-base leading-7 text-white/60">
             Enter your rewards program and points balance. We collect your details so our desk can verify availability and deliver an exact offer within one business day.
           </p>
           <div className="mt-8 space-y-4 border-t border-white/8 pt-8">
@@ -34,7 +34,7 @@ export default async function InstantQuotePage() {
                 <span className="mt-1 size-1.5 shrink-0 rounded-full bg-primary" />
                 <div>
                   <p className="text-sm font-semibold text-white">{title}</p>
-                  <p className="text-xs text-[#A0A0A0]">{desc}</p>
+                  <p className="text-xs text-white/60">{desc}</p>
                 </div>
               </div>
             ))}

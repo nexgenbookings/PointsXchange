@@ -67,7 +67,7 @@ export function Comparison() {
                   className={`p-3 text-center text-xs font-semibold sm:p-4 sm:text-sm ${
                     col.highlight
                       ? "border-x border-primary/20 bg-primary/8 text-primary"
-                      : "text-[#A0A0A0]"
+                      : "text-white/60"
                   }`}
                 >
                   {col.label}
@@ -88,7 +88,7 @@ export function Comparison() {
                 transition={{ delay: i * 0.05 }}
                 className="grid grid-cols-4 border-b border-white/5 last:border-0 hover:bg-white/[0.02] transition-colors"
               >
-                <div className="p-3 text-xs text-[#A0A0A0] sm:p-4 sm:text-sm">{row.label}</div>
+                <div className="p-3 text-xs text-white/60 sm:p-4 sm:text-sm">{row.label}</div>
                 {cols.map((col) => (
                   <div
                     key={col.key}

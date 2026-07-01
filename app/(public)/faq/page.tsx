@@ -33,7 +33,7 @@ export default async function FAQPage() {
               {rows.map((faq) => (
                 <details key={faq.id} className="group py-5">
                   <summary className="cursor-pointer list-none font-semibold text-white/80 hover:text-white">{faq.question}</summary>
-                  <p className="mt-3 text-sm leading-7 text-[#A0A0A0]">{faq.answer}</p>
+                  <p className="mt-3 text-sm leading-7 text-white/60">{faq.answer}</p>
                 </details>
               ))}
             </div>

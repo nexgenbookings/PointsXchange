@@ -19,7 +19,7 @@ export default async function BlogPage() {
         <div className="relative mx-auto max-w-7xl px-4 py-14 lg:px-8">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Insights</p>
           <h1 className="mt-3 font-serif text-4xl font-semibold text-white sm:text-5xl">Points Xchange Blog</h1>
-          <p className="mt-3 text-[#A0A0A0]">Guides to maximizing points value, understanding market rates, and selling rewards for cash.</p>
+          <p className="mt-3 text-white/60">Guides to maximizing points value, understanding market rates, and selling rewards for cash.</p>
         </div>
       </div>
 

@@ -38,7 +38,7 @@ export function FinalCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="mx-auto mt-5 max-w-md text-base text-[#A0A0A0]"
+          className="mx-auto mt-5 max-w-md text-base text-white/60"
         >
           Receive a verified offer range in seconds. No account required, no commitments.
         </motion.p>

@@ -24,7 +24,7 @@ export default function ContactPage() {
 
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-14 md:grid-cols-[1fr_1.4fr] md:items-start lg:px-8">
         <div>
-          <p className="text-[#A0A0A0]">Reach us directly via WhatsApp or email, or use the form and we&apos;ll respond within one business day.</p>
+          <p className="text-white/60">Reach us directly via WhatsApp or email, or use the form and we&apos;ll respond within one business day.</p>
 
           <div className="mt-8 space-y-3">
             <a
@@ -35,7 +35,7 @@ export default function ContactPage() {
                 <Mail className="size-4 text-primary" />
               </span>
               <div>
-                <p className="text-xs text-[#A0A0A0]">Email</p>
+                <p className="text-xs text-white/60">Email</p>
                 <p className="font-semibold text-white">{contactEmail}</p>
               </div>
             </a>
@@ -47,7 +47,7 @@ export default function ContactPage() {
                 <MessageCircle className="size-4 text-primary" />
               </span>
               <div>
-                <p className="text-xs text-[#A0A0A0]">WhatsApp</p>
+                <p className="text-xs text-white/60">WhatsApp</p>
                 <p className="font-semibold text-white">{displayWhatsappNumber}</p>
               </div>
             </a>
@@ -63,7 +63,7 @@ export default function ContactPage() {
 
         <div className="rounded-2xl border border-white/8 bg-[#111827] p-6 sm:p-8">
           <p className="font-semibold text-white">Send a message</p>
-          <p className="mt-1 text-sm text-[#A0A0A0]">We respond within one business day.</p>
+          <p className="mt-1 text-sm text-white/60">We respond within one business day.</p>
           <div className="mt-6">
             <ContactForm />
           </div>

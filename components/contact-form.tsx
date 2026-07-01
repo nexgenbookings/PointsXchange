@@ -11,7 +11,7 @@ export function ContactForm() {
     return (
       <div className="rounded-xl border border-green-500/20 bg-green-500/8 p-5 text-center">
         <p className="font-semibold text-green-400">Message received</p>
-        <p className="mt-1 text-sm text-[#A0A0A0]">We&apos;ll respond within one business day.</p>
+        <p className="mt-1 text-sm text-white/60">We&apos;ll respond within one business day.</p>
       </div>
     );
   }
