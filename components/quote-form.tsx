@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState, useActionState } from "react";
-import { ArrowRight, Building2, Calculator, CheckCircle2, CreditCard, LockKeyhole, Plane, Sparkles } from "lucide-react";
+import { ArrowRight, Building2, Calculator, CheckCircle2, CreditCard, Loader2, LockKeyhole, Plane, Sparkles } from "lucide-react";
 import { submitLead } from "@/lib/actions";
 import { calculateQuote, type QuoteProgram } from "@/lib/quote";
 import { formatCurrency } from "@/lib/utils";
@@ -47,7 +47,7 @@ export function QuoteForm({ programs }: Props) {
 
   if (state?.ok && state.quote) {
     return (
-      <div className="rounded-2xl border border-white/8 bg-[#111] p-6 shadow-2xl shadow-black/50 sm:p-8">
+      <div className="rounded-2xl border border-white/8 bg-[#111827] p-6 shadow-2xl shadow-black/50 sm:p-8">
         <div className="flex items-center gap-3">
           <span className="grid size-10 place-items-center rounded-full bg-green-500/15 text-green-400">
             <CheckCircle2 className="size-5" />
@@ -57,7 +57,7 @@ export function QuoteForm({ programs }: Props) {
             <p className="text-sm text-[#A0A0A0]">Our desk will review and follow up shortly.</p>
           </div>
         </div>
-        <div className="mt-6 rounded-xl bg-black p-5 text-white">
+        <div className="mt-6 rounded-xl bg-[#080C18] p-5 text-white">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#A0A0A0]">Estimated payout range</p>
           <p className="mt-2 text-3xl font-semibold text-primary">
             {formatCurrency(state.quote.low)} – {formatCurrency(state.quote.high)}
@@ -73,7 +73,7 @@ export function QuoteForm({ programs }: Props) {
   }
 
   return (
-    <div className="rounded-2xl border border-white/8 bg-[#111] p-5 shadow-2xl shadow-black/50 sm:p-6">
+    <div className="rounded-2xl border border-white/8 bg-[#111827] p-5 shadow-2xl shadow-black/50 sm:p-6">
       {/* Header */}
       <div className="flex items-start gap-3">
         <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-black text-primary">
@@ -193,15 +193,36 @@ export function QuoteForm({ programs }: Props) {
         </div>
 
         {/* Contact fields */}
-        <div className="grid gap-2.5 sm:grid-cols-3">
-          <Input name="name"  placeholder="Your name"  required />
-          <Input name="email" type="email" placeholder="Email" required />
-          <Input name="phone" placeholder="Phone" required />
+        <div className="rounded-xl border border-white/8 bg-white/[0.02] p-4">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-white/40">Your contact details</p>
+          <div className="grid gap-3 sm:grid-cols-3">
+            <label className="grid gap-1.5">
+              <span className="text-xs font-medium text-white/60">Full name</span>
+              <Input name="name" placeholder="Jane Smith" required />
+            </label>
+            <label className="grid gap-1.5">
+              <span className="text-xs font-medium text-white/60">Email address</span>
+              <Input name="email" type="email" placeholder="jane@example.com" required />
+            </label>
+            <label className="grid gap-1.5">
+              <span className="text-xs font-medium text-white/60">Phone number</span>
+              <Input name="phone" type="tel" placeholder="+1 (555) 000-0000" required />
+            </label>
+          </div>
         </div>
 
-        <Button type="submit" disabled={pending} className="gap-2 rounded-xl">
-          {pending ? "Submitting…" : "Request Verified Offer"}
-          {!pending && <ArrowRight className="size-4" />}
+        <Button type="submit" disabled={pending} className="h-13 gap-2 rounded-xl text-base">
+          {pending ? (
+            <>
+              <Loader2 className="size-4 animate-spin" />
+              Submitting…
+            </>
+          ) : (
+            <>
+              Request Verified Offer
+              <ArrowRight className="size-4" />
+            </>
+          )}
         </Button>
 
         {state?.message && !state.ok && (
