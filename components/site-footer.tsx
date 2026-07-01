@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail, MessageCircle, ArrowRight } from "lucide-react";
+import { Mail, MessageCircle, ArrowRight, ShieldCheck, Clock } from "lucide-react";
 import { contactEmail, displayWhatsappNumber, whatsappNumber } from "@/lib/content";
 import { Logo } from "@/components/site-header";
 
@@ -93,9 +93,18 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-2 border-t border-white/8 pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-neutral-600">© {new Date().getFullYear()} Points Xchange. All rights reserved.</p>
-          <p className="text-xs text-neutral-600">Private points brokerage · Not affiliated with any loyalty program</p>
+        <div className="mt-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 border-t border-white/8 pt-6">
+          <div className="flex items-center gap-1.5 text-xs text-white/30">
+            <ShieldCheck className="size-3.5 shrink-0 text-primary/60" />
+            Secure &amp; Confidential
+          </div>
+          <div className="flex items-center gap-1.5 text-xs text-white/30">
+            <Clock className="size-3.5 shrink-0 text-primary/60" />
+            Same-day response
+          </div>
+          <div className="h-3 w-px bg-white/10 hidden sm:block" />
+          <p className="text-xs text-white/20">© {new Date().getFullYear()} Points Xchange. All rights reserved.</p>
+          <p className="text-xs text-white/20">Not affiliated with any loyalty program</p>
         </div>
       </div>
     </footer>

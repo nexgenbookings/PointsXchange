@@ -67,7 +67,7 @@ export function MarketActivity({ programs }: { programs: QuoteProgram[] }) {
         >
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Live Desk</p>
-            <h2 className="mt-2 font-serif text-3xl font-semibold text-white sm:text-4xl">Current market activity.</h2>
+            <h2 className="mt-2 font-serif text-4xl font-semibold text-white sm:text-5xl">Current market activity.</h2>
           </div>
           <div className="flex items-center gap-2 text-sm text-[#A0A0A0]">
             <span className="size-2 animate-pulse rounded-full bg-green-400" />

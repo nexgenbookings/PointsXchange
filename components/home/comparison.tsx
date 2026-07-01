@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, X, Minus } from "lucide-react";
+import { Minus } from "lucide-react";
 
 type Val = "yes" | "no" | "partial";
 
@@ -16,9 +16,19 @@ const rows: { label: string; px: Val; market: Val; fb: Val }[] = [
 ];
 
 const Icon = ({ val }: { val: Val }) =>
-  val === "yes"     ? <Check className="size-4 text-green-400" /> :
-  val === "partial" ? <Minus className="size-4 text-yellow-400" /> :
-                      <X className="size-4 text-white/20" />;
+  val === "yes" ? (
+    <span className="flex size-5 items-center justify-center rounded-full bg-green-500/15 ring-1 ring-green-500/40">
+      <svg className="size-3 text-green-400" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+    </span>
+  ) : val === "partial" ? (
+    <span className="flex size-5 items-center justify-center rounded-full bg-yellow-500/10 ring-1 ring-yellow-500/30">
+      <Minus className="size-3 text-yellow-400" />
+    </span>
+  ) : (
+    <span className="flex size-5 items-center justify-center rounded-full bg-white/5">
+      <svg className="size-3 text-white/20" viewBox="0 0 12 12" fill="none"><path d="M3 3l6 6M9 3l-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
+    </span>
+  );
 
 const cols = [
   { key: "px",     label: "PointsXchange", highlight: true  },
@@ -28,7 +38,7 @@ const cols = [
 
 export function Comparison() {
   return (
-    <section className="border-t border-white/8 bg-[#111]">
+    <section className="border-t border-white/8 bg-[#111827]">
       <div className="mx-auto max-w-5xl px-4 py-16 lg:px-8 lg:py-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -37,7 +47,7 @@ export function Comparison() {
           className="text-center"
         >
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Why us</p>
-          <h2 className="mt-2 font-serif text-3xl font-semibold text-white sm:text-4xl">Why sellers choose us.</h2>
+          <h2 className="mt-2 font-serif text-4xl font-semibold text-white sm:text-5xl">Why sellers choose us.</h2>
         </motion.div>
 
         <motion.div
@@ -61,6 +71,9 @@ export function Comparison() {
                   }`}
                 >
                   {col.label}
+                  {col.highlight && (
+                    <span className="ml-2 inline-block rounded-full bg-primary px-2 py-0.5 text-[0.6rem] font-bold uppercase tracking-wide text-black">Best Value</span>
+                  )}
                 </div>
               ))}
             </div>

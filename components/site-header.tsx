@@ -81,7 +81,7 @@ export function SiteHeader() {
           >
             <MessageCircle className="size-3.5" />
             <span className="hidden sm:inline text-xs">{displayWhatsappNumber}</span>
-            <span className="sm:hidden text-xs">Chat</span>
+            <span className="sm:hidden text-xs">WhatsApp</span>
           </a>
           <button
             onClick={() => setOpen(!open)}

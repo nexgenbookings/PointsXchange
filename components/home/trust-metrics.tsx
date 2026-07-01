@@ -63,7 +63,7 @@ export function TrustMetrics() {
               <p className="text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
                 {"static" in m && m.static ? m.static : <CountUp end={m.value} prefix={m.prefix} suffix={m.suffix} decimals={m.decimals} />}
               </p>
-              <p className="mt-2 text-sm text-[#A0A0A0]">{m.label}</p>
+              <p className="mt-2 text-sm text-white/60">{m.label}</p>
               <div className="mx-auto mt-3 h-px w-8 bg-primary/40" />
             </motion.div>
           ))}

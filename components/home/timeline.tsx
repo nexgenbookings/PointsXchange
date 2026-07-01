@@ -50,7 +50,7 @@ export function ProcessTimeline() {
         >
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">The process</p>
-            <h2 className="mt-2 font-serif text-3xl font-semibold text-white sm:text-4xl">From balance to payout.</h2>
+            <h2 className="mt-2 font-serif text-4xl font-semibold text-white sm:text-5xl">From balance to payout.</h2>
           </div>
           <p className="max-w-sm text-sm text-[#A0A0A0]">Hover each step to learn more. Most transactions complete within one business day.</p>
         </motion.div>

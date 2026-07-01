@@ -29,7 +29,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </div>
       </div>
       <article className="mx-auto max-w-3xl px-4 py-14 lg:px-8">
-        <div className="space-y-6 text-lg leading-8 text-[#A0A0A0]">
+        <div className="space-y-6 text-lg leading-8 text-white/80">
           {post.content.split("\n\n").map((paragraph) => {
             const heading = paragraph.match(/^\*\*(.+?)\*\*$/);
             if (heading) {
